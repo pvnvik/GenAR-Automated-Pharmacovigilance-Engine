@@ -1,0 +1,54 @@
+dataset_name: "bisoprolol_sample_2024"
+product_name: "Bisoprolol"
+active_substance: "Bisoprolol Fumarate"
+manufacturer: "Aurobindo Pharma"
+raw_data_path: "data/raw/Bisoprolol_icsr_sample_1068rows.xlsx"
+reporting_period_start: "2024-01-01"
+reporting_period_end: "2024-12-31"
+
+column_mapping:
+  case_id: "safetyreportid"
+  version: "safetyreportversion"
+  received_date: "receivedate"
+  receipt_date: "receiptdate"
+  serious: "serious"
+  serious_death: "seriousnessdeath"
+  serious_lifethreatening: "seriousnesslifethreatening"
+  serious_hospitalization: "seriousnesshospitalization"
+  serious_disabling: "seriousnessdisabling"
+  serious_congenital: "seriousnesscongenitalanomali"
+  serious_other: "seriousnessother"
+  patient_sex: "patient_patientsex"
+  patient_age: "patient_patientonsetage"
+  patient_age_unit: "patient_patientonsetageunit"
+  country: "primarysourcecountry"
+  reactions_pt: "patient_reaction_reactionmeddrapt"
+  reactions_outcome: "patient_reaction_reactionoutcome"
+  drugs: "patient_drug_medicinalproduct"
+  drug_characterization: "patient_drug_drugcharacterization"
+  active_substance: "patient_drug_activesubstance_activesubstancename"
+  expedited_15day: "fulfillexpeditecriteria"
+
+age_buckets:
+  - label: "Pediatric (<18)"
+    min_age: 0
+    max_age: 17.99
+  - label: "Adult (18-64)"
+    min_age: 18
+    max_age: 64.99
+  - label: "Elderly (65+)"
+    min_age: 65
+    max_age: 150.0
+
+rules:
+  list_delimiter: ","
+  deduplication_policy: "LATEST_VERSION"
+  date_format_code: 102
+  unknown_country_label: "UNKNOWN"
+  unknown_sex_label: "UNKNOWN"
+  flag_positional_mismatches: true
+
+assumptions:
+  - "When multiple versions of safetyreportid exist, the highest safetyreportversion is retained for canonical case statistics."
+  - "Positionally aligned reaction meddra PT and outcome lists are split on commas; length mismatches are flagged as DQ warnings."
+  - "Patient onset age unit is standardized to years."
