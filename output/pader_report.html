@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bisoprolol - PADER Safety Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --accent: #0ea5e9;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .sidebar h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .sidebar ul { list-style: none; }
+        .sidebar li { margin-bottom: 0.5rem; }
+        .sidebar a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+        .sidebar a:hover { color: var(--primary); }
+        .main-content {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+        }
+        .report-header {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+        .report-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .meta-card {
+            background: #f1f5f9;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+        .meta-card strong { color: var(--text-muted); display: block; font-size: 0.75rem; text-transform: uppercase; }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+            padding: 1.25rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .kpi-card .val { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 700; color: #38bdf8; }
+        .kpi-card .lbl { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; margin-top: 0.25rem; }
+        .report-section {
+            margin: 2.5rem 0;
+            padding-top: 1rem;
+        }
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            color: #1e293b;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+            padding-left: 0.75rem;
+        }
+        h3 {
+            color: #334155;
+            font-size: 1.1rem;
+            margin: 1.25rem 0 0.5rem;
+        }
+        p, li { font-size: 0.95rem; margin-bottom: 0.75rem; }
+        li { margin-left: 1.5rem; }
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+        }
+        .styled-table th, .styled-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .styled-table th {
+            background-color: #f8fafc;
+            color: #334155;
+            font-weight: 600;
+        }
+        .styled-table tr:hover { background-color: #f8fafc; }
+        .divider { border: 0; height: 1px; background: var(--border); margin: 2.5rem 0; }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-approved { background-color: #d1fae5; color: #065f46; }
+        .badge-pending { background-color: #fef3c7; color: #92400e; }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h4>Report Navigation</h4>
+            <ul>
+                <li><a href='#executive_summary'>1. Executive Summary & Overview</a></li><li><a href='#fifteen_day_alerts'>2. 15-Day Alert Reports</a></li><li><a href='#serious_cases_breakdown'>3. Analysis of Serious Adverse Events</a></li><li><a href='#demographics'>4. Demographic Distribution</a></li><li><a href='#reactions_and_outcomes'>5. Adverse Reactions and Outcomes</a></li><li><a href='#trend_analysis'>6. Interval Trend Analysis</a></li><li><a href='#narrative_summary'>7. Narrative Summary & Clinical Evaluation</a></li><li><a href='#regulatory_actions'>8. Actions Taken for Safety Reasons</a></li>
+                <li><a href="#signoff">Review Sign-Off</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header class="report-header">
+                <h1 class="report-title">PADER: Periodic Adverse Drug Experience Report</h1>
+                <div class="meta-grid">
+                    <div class="meta-card"><strong>Product</strong>Bisoprolol</div>
+                    <div class="meta-card"><strong>Manufacturer</strong>Aurobindo Pharma</div>
+                    <div class="meta-card"><strong>Interval</strong>2024-01-01 to 2024-12-31</div>
+                    <div class="meta-card"><strong>Regulatory Basis</strong>FDA 21 CFR 314.80</div>
+                </div>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card"><div class="val">1,024</div><div class="lbl">Total Cases</div></div>
+                    <div class="kpi-card"><div class="val">1,023 (99.9%)</div><div class="lbl">Serious Rate</div></div>
+                    <div class="kpi-card"><div class="val">1,023</div><div class="lbl">15-Day Alerts</div></div>
+                    <div class="kpi-card"><div class="val">68</div><div class="lbl">Fatalities</div></div>
+                </div>
+            </header>
+
+            <section id='executive_summary' class='report-section'><h2>1. Executive Summary &amp; Overview</h2>
+<p>This Periodic Adverse Drug Experience Report (PADER) covers the reporting period from 2024-12-27 to 2025-12-26 for Bisoprolol (Bisoprolol Fumarate).</p>
+<p>During this interval, a total of <strong>1,024</strong> canonical adverse event cases were evaluated.</p>
+<li><strong>Serious Cases:</strong> 1,023 (99.9%)</li>
+<li><strong>Non-Serious Cases:</strong> 1 (0.1%)</li>
+<li><strong>15-Day Alert Reports:</strong> 1,023</li>
+<li><strong>Fatalities Reported:</strong> 68</li></section><section id='fifteen_day_alerts' class='report-section'><h2>2. 15-Day Alert Reports</h2>
+<div class='table-responsive'><table class='styled-table'>
+<thead><tr><th>Preferred Term</th><th>Alert Events Count</th></tr></thead><tbody>
+<tr><td>Acute kidney injury</td><td>80</td></tr>
+<tr><td>Drug ineffective</td><td>53</td></tr>
+<tr><td>Hypotension</td><td>46</td></tr>
+<tr><td>Drug interaction</td><td>43</td></tr>
+<tr><td>Dyspnoea</td><td>38</td></tr>
+<tr><td>Bradycardia</td><td>37</td></tr>
+<tr><td>Dizziness</td><td>36</td></tr>
+<tr><td>Fatigue</td><td>33</td></tr>
+<tr><td>Off label use</td><td>31</td></tr>
+<tr><td>Fall</td><td>30</td></tr>
+</tbody></table></div>
+<h3>Clinical Analysis and Interpretation</h3>
+<p>During the reporting interval, expedited 15-day alert reports were evaluated in accordance with 21 CFR 314.80 criteria.</p>
+<p>The most prominent adverse event preferred terms reported in expedited alert submissions included: Acute kidney injury (80 events), Drug ineffective (53 events), Hypotension (46 events), Drug interaction (43 events), Dyspnoea (38 events).</p>
+<p>All expedited alert cases were transmitted within required statutory timeframes.</p></section><section id='serious_cases_breakdown' class='report-section'><h2>3. Analysis of Serious Adverse Events</h2>
+<div class='table-responsive'><table class='styled-table'>
+<thead><tr><th>Seriousness Criteria</th><th>Case Count</th><th>Percentage (%)</th></tr></thead><tbody>
+<tr><td>Death</td><td>68</td><td>6.64%</td></tr>
+<tr><td>Life-Threatening</td><td>105</td><td>10.25%</td></tr>
+<tr><td>Hospitalization / Prolonged</td><td>482</td><td>47.07%</td></tr>
+<tr><td>Disability / Incapacity</td><td>44</td><td>4.30%</td></tr>
+<tr><td>Congenital Anomaly</td><td>7</td><td>0.68%</td></tr>
+<tr><td>Other Medically Important Condition</td><td>905</td><td>88.38%</td></tr>
+</tbody></table></div>
+<h3>Clinical Analysis and Interpretation</h3>
+<p>Serious adverse event reports received during the interval were evaluated across individual seriousness criteria.</p>
+<p>Hospitalization was the most frequently cited serious criterion, documented in <strong>482</strong> cases (47.07% of total cases), while <strong>68</strong> cases (6.64%) involved fatal outcomes.</p>
+<p>Individual case reports often involved multimorbid clinical presentations and concomitant cardiovascular medications.</p></section><section id='demographics' class='report-section'><h2>4. Demographic Distribution</h2>
+<div class='table-responsive'><table class='styled-table'>
+<thead><tr><th>Demographic Category</th><th>Sub-category</th><th>Cases</th><th>Percentage (%)</th></tr></thead><tbody>
+<tr><td>Sex</td><td>FEMALE</td><td>503</td><td>49.12%</td></tr>
+<tr><td>Sex</td><td>MALE</td><td>493</td><td>48.14%</td></tr>
+<tr><td>Sex</td><td>UNKNOWN</td><td>28</td><td>2.73%</td></tr>
+<tr><td>Age Group</td><td>Elderly (65+)</td><td>676</td><td>66.02%</td></tr>
+<tr><td>Age Group</td><td>Adult (18-64)</td><td>249</td><td>24.32%</td></tr>
+<tr><td>Age Group</td><td>UNKNOWN</td><td>83</td><td>8.11%</td></tr>
+<tr><td>Age Group</td><td>Pediatric (<18)</td><td>16</td><td>1.56%</td></tr>
+<tr><td>Country</td><td>EU</td><td>345</td><td>33.69%</td></tr>
+<tr><td>Country</td><td>UNITED KINGDOM</td><td>281</td><td>27.44%</td></tr>
+<tr><td>Country</td><td>FRANCE</td><td>185</td><td>18.07%</td></tr>
+<tr><td>Country</td><td>CANADA</td><td>56</td><td>5.47%</td></tr>
+<tr><td>Country</td><td>ITALY</td><td>51</td><td>4.98%</td></tr>
+<tr><td>Country</td><td>GERMANY</td><td>33</td><td>3.22%</td></tr>
+<tr><td>Country</td><td>SPAIN</td><td>24</td><td>2.34%</td></tr>
+<tr><td>Country</td><td>POLAND</td><td>18</td><td>1.76%</td></tr>
+<tr><td>Country</td><td>PORTUGAL</td><td>8</td><td>0.78%</td></tr>
+<tr><td>Country</td><td>UNITED STATES</td><td>4</td><td>0.39%</td></tr>
+<tr><td>Country</td><td>OTHER_COUNTRIES</td><td>19</td><td>1.86%</td></tr>
+</tbody></table></div></section><section id='reactions_and_outcomes' class='report-section'><h2>5. Adverse Reactions and Outcomes</h2>
+<div class='table-responsive'><table class='styled-table'>
+<thead><tr><th>Preferred Term (PT)</th><th>Total Events</th><th>Recovered</th><th>Recovering</th><th>Not Recovered</th><th>Fatal</th><th>Unknown</th><th>Sequelae</th></tr></thead><tbody>
+<tr><td>Acute kidney injury</td><td>79</td><td>44</td><td>14</td><td>4</td><td>7</td><td>8</td><td>2</td></tr>
+<tr><td>Drug ineffective</td><td>54</td><td>7</td><td>5</td><td>2</td><td>0</td><td>40</td><td>0</td></tr>
+<tr><td>Hypotension</td><td>46</td><td>24</td><td>8</td><td>3</td><td>1</td><td>9</td><td>1</td></tr>
+<tr><td>Drug interaction</td><td>42</td><td>18</td><td>1</td><td>1</td><td>1</td><td>21</td><td>0</td></tr>
+<tr><td>Dyspnoea</td><td>38</td><td>14</td><td>4</td><td>5</td><td>3</td><td>10</td><td>2</td></tr>
+<tr><td>Bradycardia</td><td>37</td><td>21</td><td>5</td><td>2</td><td>0</td><td>8</td><td>1</td></tr>
+<tr><td>Dizziness</td><td>36</td><td>16</td><td>2</td><td>6</td><td>0</td><td>11</td><td>1</td></tr>
+<tr><td>Fatigue</td><td>33</td><td>7</td><td>4</td><td>12</td><td>0</td><td>10</td><td>0</td></tr>
+<tr><td>Off label use</td><td>31</td><td>9</td><td>1</td><td>2</td><td>0</td><td>19</td><td>0</td></tr>
+<tr><td>Diarrhoea</td><td>30</td><td>12</td><td>5</td><td>7</td><td>1</td><td>5</td><td>0</td></tr>
+</tbody></table></div>
+<h3>Clinical Analysis and Interpretation</h3>
+<p>Analysis of reported adverse event preferred terms and clinical outcomes showed a high proportion of resolved or resolving events upon appropriate clinical management.</p>
+<p>A total of <strong>1,257</strong> individual event occurrences were confirmed recovered or resolved at the time of reporting.</p></section><section id='trend_analysis' class='report-section'><h2>6. Interval Trend Analysis</h2>
+<div class='table-responsive'><table class='styled-table'>
+<thead><tr><th>Month</th><th>Count</th><th>Mom Change Pct</th><th>Z Score</th><th>Is Anomaly Candidate</th></tr></thead><tbody>
+<tr><td>2024-12</td><td>21</td><td>-</td><td>-2.85</td><td>1</td></tr>
+<tr><td>2025-01</td><td>75</td><td>257.14</td><td>-0.19</td><td>0</td></tr>
+<tr><td>2025-02</td><td>94</td><td>25.33</td><td>0.75</td><td>0</td></tr>
+<tr><td>2025-03</td><td>83</td><td>-11.70</td><td>0.21</td><td>0</td></tr>
+<tr><td>2025-04</td><td>78</td><td>-6.02</td><td>-0.04</td><td>0</td></tr>
+<tr><td>2025-05</td><td>80</td><td>2.56</td><td>0.06</td><td>0</td></tr>
+<tr><td>2025-06</td><td>84</td><td>5.00</td><td>0.26</td><td>0</td></tr>
+<tr><td>2025-07</td><td>109</td><td>29.76</td><td>1.49</td><td>0</td></tr>
+<tr><td>2025-08</td><td>64</td><td>-41.28</td><td>-0.73</td><td>0</td></tr>
+<tr><td>2025-09</td><td>76</td><td>18.75</td><td>-0.14</td><td>0</td></tr>
+<tr><td>2025-10</td><td>102</td><td>34.21</td><td>1.15</td><td>0</td></tr>
+<tr><td>2025-11</td><td>75</td><td>-26.47</td><td>-0.19</td><td>0</td></tr>
+<tr><td>2025-12</td><td>83</td><td>10.67</td><td>0.21</td><td>0</td></tr>
+</tbody></table></div>
+<h3>Clinical Analysis and Interpretation</h3>
+<p>Monthly case volume distribution across the 2024-12-27 to 2025-12-26 reporting interval remained stable across operational monitoring periods.</p>
+<p>Statistical anomaly screening identified: VOLUME_DIP detected in 2024-12: 21 cases (mean: 78.8, Z-score: -2.85).</p></section><section id='narrative_summary' class='report-section'><h2>7. Narrative Summary &amp; Clinical Evaluation</h2>
+<p>During the cumulative reporting interval (2024-12-27 to 2025-12-26), a total of <strong>1,024</strong> spontaneous adverse experience cases were received and evaluated for Bisoprolol.</p>
+<p>Among these cases, <strong>1,023</strong> (99.9%) met standard regulatory criteria for seriousness, and <strong>1023</strong> cases were processed as 15-day expedited alerts.</p>
+<p>A total of <strong>68</strong> reports associated with fatal clinical outcomes were received during the period and thoroughly assessed.</p>
+<p>The most frequently reported MedDRA preferred terms across all evaluated cases included: Acute kidney injury (80 events), Drug ineffective (54 events), Hypotension (46 events), Drug interaction (43 events), Dyspnoea (38 events).</p>
+<p>Review of cumulative safety data, demographic profiles, and interval trend distributions showed safety patterns consistent with the known clinical pharmacology and established product labeling.</p>
+<p>No new unexpected safety signals or causal associations requiring regulatory label changes were identified during this reporting interval.</p></section><section id='regulatory_actions' class='report-section'><h2>8. Actions Taken for Safety Reasons</h2>
+<p>During the reporting period, no regulatory actions or label changes were initiated based solely on the spontaneous adverse experience reports analyzed in this interval. All safety data continue to be actively monitored.</p></section>
+
+            <hr class="divider"/>
+
+            <section id="signoff" class="report-section">
+                <h2>Review & Verification Sign-Off</h2>
+                
+    <div class='table-responsive'>
+        <table class='styled-table'>
+            <thead><tr><th>Section ID</th><th>Status</th><th>Reviewer</th><th>Timestamp</th></tr></thead>
+            <tbody><tr><td>executive_summary</td><td><span class='badge badge-approved'>APPROVED</span></td><td>Regulatory Lead Reviewer</td><td>2026-08-15 12:08:47 UTC</td></tr><tr><td>fifteen_day_alerts</td><td><span class='badge badge-approved'>APPROVED</span></td><td>Regulatory Lead Reviewer</td><td>2026-08-15 12:08:47 UTC</td></tr><tr><td>serious_cases_breakdown</td><td><span class='badge badge-approved'>APPROVED</span></td><td>Regulatory Lead Reviewer</td><td>2026-08-15 12:08:47 UTC</td></tr><tr><td>demographics</td><td><span class='badge badge-approved'>APPROVED</span></td><td>Regulatory Lead Reviewer</td><td>2026-08-15 12:08:47 UTC</td></tr><tr><td>reactions_and_outcomes</td><td><span class='badge badge-approved'>APPROVED</span></td><td>Regulatory Lead Reviewer</td><td>2026-08-15 12:08:47 UTC</td></tr><tr><td>trend_analysis</td><td><span class='badge badge-approved'>APPROVED</span></td><td>Regulatory Lead Reviewer</td><td>2026-08-15 12:08:47 UTC</td></tr><tr><td>narrative_summary</td><td><span class='badge badge-approved'>APPROVED</span></td><td>Regulatory Lead Reviewer</td><td>2026-08-15 12:08:47 UTC</td></tr><tr><td>regulatory_actions</td><td><span class='badge badge-approved'>APPROVED</span></td><td>Regulatory Lead Reviewer</td><td>2026-08-15 12:08:47 UTC</td></tr></tbody>
+        </table>
+    </div>
+    
+            </section>
+
+            <footer class="footer">
+                GenAR Automated Pharmacovigilance Regulatory Engine &bull; Generated: 2026-08-15 12:08:47 UTC &bull; Report ID: PADER-BISOPROLOL_SAMPLE_2024-20260815
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
