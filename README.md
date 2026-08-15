@@ -88,6 +88,10 @@ pvn-vikrant-genar-challenge/
 │       │   ├── tables.py
 │       │   ├── llm.py
 │       │   └── dispatcher.py
+│       ├── orchestration/          # LangGraph StateGraph workflow & state machine
+│       │   ├── state.py
+│       │   ├── nodes.py
+│       │   └── graph.py
 │       ├── review/                 # Human review workflow & citation traceability
 │       │   ├── workflow.py
 │       │   └── traceability.py
@@ -97,7 +101,8 @@ pvn-vikrant-genar-challenge/
 │           └── manifest.py
 ├── tasks/                          # Detailed engineering milestone documentation
 │   ├── phase1.md through phase10.md
-└── tests/                          # 61 Comprehensive unit, regression & pipeline tests
+│   └── orchestration.md            # LangGraph state management & workflow architecture
+└── tests/                          # 65 Comprehensive unit, regression & pipeline tests
     ├── conftest.py
     ├── test_cli.py
     ├── test_config.py
@@ -106,6 +111,7 @@ pvn-vikrant-genar-challenge/
     ├── test_analyses.py
     ├── test_evidence.py
     ├── test_generation.py
+    ├── test_orchestration.py       # LangGraph StateGraph & node tests
     ├── test_review_and_export.py
     └── test_models.py
 ```
@@ -122,9 +128,13 @@ pip install -r requirements.txt
 ```
 
 ### 1. Run Complete End-to-End Pipeline
-Executes ingestion, validation, canonicalization, deterministic analysis, packet assembly, multi-mode generation, fact checking, reviewer approval, and export in **~1.2 seconds**:
+Executes ingestion, validation, canonicalization, deterministic analysis, packet assembly, multi-mode generation, fact checking, reviewer approval, and export:
 ```powershell
+# Direct CLI execution:
 python -m genar run-pipeline -o output
+
+# Or LangGraph StateGraph orchestrated execution:
+python -m genar run-graph -o output
 ```
 
 **Artifacts Generated**:
@@ -146,6 +156,7 @@ python -m genar run-pipeline -o output
 | `python -m genar build-packets` | Assembles context-isolated section evidence packets with anti-hallucination rules. |
 | `python -m genar generate-drafts` | Dispatches section generation across template, table, and LLM modes. |
 | `python -m genar run-pipeline` | Executes the complete end-to-end pipeline and exports all production artifacts. |
+| `python -m genar run-graph` | Executes the complete pipeline orchestrated through a compiled **LangGraph StateGraph**. |
 
 ---
 

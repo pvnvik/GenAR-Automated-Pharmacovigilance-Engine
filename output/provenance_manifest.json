@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
   "report_id": "PADER-BISOPROLOL_SAMPLE_2024-20260815",
-  "run_id": "56d11a18",
+  "run_id": "b4871b19",
   "app_version": "0.1.0",
-  "generated_at": "2026-08-15T12:08:47.337025+00:00",
+  "generated_at": "2026-08-15T12:41:38.097419+00:00",
   "product": {
     "name": "Bisoprolol",
     "manufacturer": "Aurobindo Pharma",
@@ -22,15 +22,15 @@
       "version": "1.0",
       "category": "alerts",
       "method_name": "genar.analyses.alerts.compute_15_day_alerts",
-      "calculated_at": "2026-08-15T12:08:47.258614+00:00",
-      "execution_time_ms": 8.257,
+      "calculated_at": "2026-08-15T12:41:37.997575+00:00",
+      "execution_time_ms": 8.999,
       "contributing_cases_count": 1023,
       "sample_case_ids": [
-        "25229228",
-        "24907834",
-        "25336030",
-        "24784989",
-        "24963798"
+        "25191358",
+        "25805267",
+        "25528383",
+        "25351450",
+        "26096759"
       ],
       "parameters": {},
       "metrics_summary": {
@@ -57,8 +57,8 @@
       "version": "1.0",
       "category": "demographics",
       "method_name": "genar.analyses.demographics.compute_demographics_breakdown",
-      "calculated_at": "2026-08-15T12:08:47.263124+00:00",
-      "execution_time_ms": 4.372,
+      "calculated_at": "2026-08-15T12:41:38.004829+00:00",
+      "execution_time_ms": 7.031,
       "contributing_cases_count": 1024,
       "sample_case_ids": [
         "24780403",
@@ -110,8 +110,8 @@
       "version": "1.0",
       "category": "outcomes",
       "method_name": "genar.analyses.outcomes.compute_outcomes_analysis",
-      "calculated_at": "2026-08-15T12:08:47.287270+00:00",
-      "execution_time_ms": 24.046,
+      "calculated_at": "2026-08-15T12:41:38.040657+00:00",
+      "execution_time_ms": 35.653,
       "contributing_cases_count": 1018,
       "sample_case_ids": [
         "24780403",
@@ -139,8 +139,8 @@
       "version": "1.0",
       "category": "reactions",
       "method_name": "genar.analyses.reactions.compute_reactions_analysis",
-      "calculated_at": "2026-08-15T12:08:47.315581+00:00",
-      "execution_time_ms": 28.181,
+      "calculated_at": "2026-08-15T12:41:38.071928+00:00",
+      "execution_time_ms": 31.151,
       "contributing_cases_count": 1024,
       "sample_case_ids": [
         "24780403",
@@ -178,8 +178,8 @@
       "version": "1.0",
       "category": "seriousness",
       "method_name": "genar.analyses.seriousness.compute_seriousness_breakdown",
-      "calculated_at": "2026-08-15T12:08:47.317812+00:00",
-      "execution_time_ms": 2.123,
+      "calculated_at": "2026-08-15T12:41:38.074051+00:00",
+      "execution_time_ms": 2.023,
       "contributing_cases_count": 1023,
       "sample_case_ids": [
         "24780403",
@@ -216,8 +216,8 @@
       "version": "1.0",
       "category": "trends",
       "method_name": "genar.analyses.trends.compute_interval_trends",
-      "calculated_at": "2026-08-15T12:08:47.325283+00:00",
-      "execution_time_ms": 7.375,
+      "calculated_at": "2026-08-15T12:41:38.084220+00:00",
+      "execution_time_ms": 10.043,
       "contributing_cases_count": 1024,
       "sample_case_ids": [
         "24780403",
@@ -254,8 +254,8 @@
       "version": "1.0",
       "category": "volume",
       "method_name": "genar.analyses.volume.compute_volume_summary",
-      "calculated_at": "2026-08-15T12:08:47.328702+00:00",
-      "execution_time_ms": 3.314,
+      "calculated_at": "2026-08-15T12:41:38.087610+00:00",
+      "execution_time_ms": 3.284,
       "contributing_cases_count": 1024,
       "sample_case_ids": [
         "24780403",
@@ -280,7 +280,7 @@
       "section_id": "executive_summary",
       "status": "APPROVED",
       "reviewer_name": "Regulatory Lead Reviewer",
-      "reviewed_at": "2026-08-15T12:08:47.335852+00:00",
+      "reviewed_at": "2026-08-15T12:41:38.095738+00:00",
       "comments": [],
       "flags_count": 0
     },
@@ -288,7 +288,7 @@
       "section_id": "fifteen_day_alerts",
       "status": "APPROVED",
       "reviewer_name": "Regulatory Lead Reviewer",
-      "reviewed_at": "2026-08-15T12:08:47.335886+00:00",
+      "reviewed_at": "2026-08-15T12:41:38.095763+00:00",
       "comments": [],
       "flags_count": 0
     },
@@ -296,7 +296,7 @@
       "section_id": "serious_cases_breakdown",
       "status": "APPROVED",
       "reviewer_name": "Regulatory Lead Reviewer",
-      "reviewed_at": "2026-08-15T12:08:47.335891+00:00",
+      "reviewed_at": "2026-08-15T12:41:38.095768+00:00",
       "comments": [],
       "flags_count": 0
     },
@@ -304,7 +304,7 @@
       "section_id": "demographics",
       "status": "APPROVED",
       "reviewer_name": "Regulatory Lead Reviewer",
-      "reviewed_at": "2026-08-15T12:08:47.335895+00:00",
+      "reviewed_at": "2026-08-15T12:41:38.095772+00:00",
       "comments": [],
       "flags_count": 0
     },
@@ -312,7 +312,7 @@
       "section_id": "reactions_and_outcomes",
       "status": "APPROVED",
       "reviewer_name": "Regulatory Lead Reviewer",
-      "reviewed_at": "2026-08-15T12:08:47.335899+00:00",
+      "reviewed_at": "2026-08-15T12:41:38.095776+00:00",
       "comments": [],
       "flags_count": 0
     },
@@ -320,7 +320,7 @@
       "section_id": "trend_analysis",
       "status": "APPROVED",
       "reviewer_name": "Regulatory Lead Reviewer",
-      "reviewed_at": "2026-08-15T12:08:47.335902+00:00",
+      "reviewed_at": "2026-08-15T12:41:38.095779+00:00",
       "comments": [],
       "flags_count": 0
     },
@@ -328,7 +328,7 @@
       "section_id": "narrative_summary",
       "status": "APPROVED",
       "reviewer_name": "Regulatory Lead Reviewer",
-      "reviewed_at": "2026-08-15T12:08:47.335906+00:00",
+      "reviewed_at": "2026-08-15T12:41:38.095782+00:00",
       "comments": [],
       "flags_count": 0
     },
@@ -336,7 +336,7 @@
       "section_id": "regulatory_actions",
       "status": "APPROVED",
       "reviewer_name": "Regulatory Lead Reviewer",
-      "reviewed_at": "2026-08-15T12:08:47.335909+00:00",
+      "reviewed_at": "2026-08-15T12:41:38.095785+00:00",
       "comments": [],
       "flags_count": 0
     }
@@ -616,11 +616,11 @@
       "method_name": "genar.analyses.alerts.compute_15_day_alerts",
       "contributing_cases_count": 1023,
       "sample_case_ids": [
-        "25229228",
-        "24907834",
-        "25336030",
-        "24784989",
-        "24963798"
+        "25191358",
+        "25805267",
+        "25528383",
+        "25351450",
+        "26096759"
       ],
       "metric_value": 1023
     },

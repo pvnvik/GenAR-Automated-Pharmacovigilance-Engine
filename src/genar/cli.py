@@ -632,5 +632,71 @@ def run_pipeline(report_config: str, dataset_config: str, output_dir: str, auto_
     console.print(summary_panel)
 
 
+@cli.command("run-graph")
+@click.option(
+    "--report-config",
+    "-r",
+    default="configs/pader.yaml",
+    help="Path to report configuration YAML file.",
+    type=click.Path(exists=True),
+)
+@click.option(
+    "--dataset-config",
+    "-d",
+    default="configs/dataset/bisoprolol.yaml",
+    help="Path to dataset configuration YAML file.",
+    type=click.Path(exists=True),
+)
+@click.option(
+    "--output-dir",
+    "-o",
+    default="output",
+    help="Directory to save generated report artifacts (Markdown, HTML, Manifest).",
+    type=click.Path(),
+)
+@click.option(
+    "--auto-approve",
+    is_flag=True,
+    default=True,
+    help="Automatically record human review approval after fact verification.",
+)
+def run_graph_command(report_config: str, dataset_config: str, output_dir: str, auto_approve: bool):
+    """Execute the GenAR regulatory pipeline orchestrated via LangGraph StateGraph."""
+    from genar.orchestration.graph import create_genar_workflow
+    from genar.orchestration.state import ReportWorkflowState
+
+    console.print(Panel(f"[bold blue]GenAR LangGraph Workflow Orchestrator[/bold blue] (v{__version__})"))
+
+    graph = create_genar_workflow()
+    initial_state: ReportWorkflowState = {
+        "report_config_path": report_config,
+        "dataset_config_path": dataset_config,
+        "output_dir": output_dir,
+        "auto_approve": auto_approve,
+        "logs": [],
+        "analyses_completed": [],
+    }
+
+    console.print("Executing LangGraph StateGraph nodes...")
+    final_state = graph.invoke(initial_state)
+
+    # Print log steps
+    for log in final_state.get("logs", []):
+        console.print(f"[cyan]>[/cyan] {log}")
+
+    exported = final_state.get("exported_files", {})
+    summary_panel = Panel(
+        f"[bold green]LangGraph Workflow Completed Successfully![/bold green]\n\n"
+        f"• [bold]Markdown Report:[/bold] {exported.get('markdown')}\n"
+        f"• [bold]Styled HTML Report:[/bold] {exported.get('html')}\n"
+        f"• [bold]Provenance Manifest:[/bold] {exported.get('manifest')}\n"
+        f"• [bold]Canonical Cases:[/bold] {final_state.get('cases_count', 0):,}\n"
+        f"• [bold]Review Status:[/bold] {'APPROVED' if final_state.get('is_approved') else 'PENDING'}",
+        title="LangGraph Orchestration Summary",
+        border_style="green",
+    )
+    console.print(summary_panel)
+
+
 if __name__ == "__main__":
     cli()
