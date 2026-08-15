@@ -314,6 +314,87 @@ def run_analysis_command(dataset_config: str, output_json: Optional[str]):
         console.print(f"[bold green]Saved {len(results)} analysis result models to {out_path}[/bold green]")
 
 
+@cli.command("build-packets")
+@click.option(
+    "--report-config",
+    "-r",
+    default="configs/pader.yaml",
+    help="Path to report configuration YAML file.",
+    type=click.Path(exists=True),
+)
+@click.option(
+    "--dataset-config",
+    "-d",
+    default="configs/dataset/bisoprolol.yaml",
+    help="Path to dataset configuration YAML file.",
+    type=click.Path(exists=True),
+)
+@click.option(
+    "--output-json",
+    "-o",
+    default=None,
+    help="Optional path to export all built evidence packets to JSON.",
+    type=click.Path(),
+)
+def build_packets_command(report_config: str, dataset_config: str, output_json: Optional[str]):
+    """Construct section-scoped EvidencePackets with strict provenance for all report sections."""
+    import json
+    from genar.analyses.registry import AnalysisRegistry
+    from genar.evidence.packet_builder import build_all_packets
+    from genar.evidence.store import EvidenceStore
+    from genar.ingest.canonicalizer import run_canonicalization
+    from genar.ingest.loader import load_raw_dataframe
+
+    console.print(Panel(f"[bold blue]GenAR Evidence Packet Builder[/bold blue] (v{__version__})"))
+
+    r_cfg = load_report_config(report_config)
+    d_cfg = load_dataset_config(dataset_config)
+    console.print(f"[green][OK][/green] Loaded report: [bold]{r_cfg.title}[/bold] & dataset: [bold]{d_cfg.product_name}[/bold]")
+
+    raw_path = Path(d_cfg.raw_data_path)
+    if not raw_path.exists():
+        console.print(f"[red][ERROR][/red] Raw data file not found: {raw_path}")
+        raise click.Abort()
+
+    raw_df = load_raw_dataframe(raw_path)
+    cases_df, reactions_df, _ = run_canonicalization(raw_df, d_cfg)
+
+    # Run analyses and populate store
+    results = AnalysisRegistry.run_all(cases_df, reactions_df, d_cfg)
+    store = EvidenceStore()
+    store.add_many(results)
+
+    console.print(f"Building isolated evidence packets for {len(r_cfg.sections)} sections...")
+    packets = build_all_packets(r_cfg, store, d_cfg)
+
+    table = Table(title="Assembled Section Evidence Packets")
+    table.add_column("Section ID", style="cyan")
+    table.add_column("Section Title", style="white")
+    table.add_column("Evidence Items", style="bold magenta")
+    table.add_column("Table Data Rows", style="green")
+    table.add_column("Non-Invention Rules", style="yellow")
+
+    for sid, pkt in packets.items():
+        tbl_count = len(pkt.table_data) if pkt.table_data else 0
+        rules_count = len(pkt.non_invention_notes)
+        table.add_row(
+            pkt.section_id,
+            pkt.section_title,
+            str(len(pkt.items)),
+            str(tbl_count) if tbl_count > 0 else "-",
+            str(rules_count) if rules_count > 0 else "-",
+        )
+
+    console.print(table)
+
+    if output_json:
+        out_path = Path(output_json)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        dump_data = {sid: pkt.model_dump(mode="json") for sid, pkt in packets.items()}
+        out_path.write_text(json.dumps(dump_data, indent=2, default=str), encoding="utf-8")
+        console.print(f"[bold green]Saved {len(packets)} evidence packets to {out_path}[/bold green]")
+
+
 @cli.command("run-pipeline")
 @click.option(
     "--report-config",
@@ -328,8 +409,8 @@ def run_analysis_command(dataset_config: str, output_json: Optional[str]):
     help="Path to dataset configuration YAML file.",
 )
 def run_pipeline(report_config: str, dataset_config: str):
-    """Execute the deterministic analysis and evidence pipeline (Phase 4+)."""
-    console.print("[yellow]Deterministic pipeline execution will be implemented in subsequent phases (Phase 5-10).[/yellow]")
+    """Execute the deterministic analysis and evidence pipeline (Phase 5+)."""
+    console.print("[yellow]Deterministic pipeline execution will be implemented in subsequent phases (Phase 6-10).[/yellow]")
 
 
 if __name__ == "__main__":

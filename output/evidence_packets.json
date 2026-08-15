@@ -1,0 +1,1980 @@
+{
+  "executive_summary": {
+    "section_id": "executive_summary",
+    "section_title": "1. Executive Summary & Overview",
+    "dataset_name": "bisoprolol_sample_2024",
+    "reporting_period": "2024-12-27 to 2025-12-26",
+    "items": {
+      "total_case_volume": {
+        "evidence_id": "ev_total_case_volume",
+        "title": "Total Case Volume",
+        "metric_key": "total_cases",
+        "value": 1024,
+        "formatted_value": "1,024 cases",
+        "provenance": {
+          "analysis_id": "total_case_volume",
+          "version": "1.0",
+          "category": "volume",
+          "calculated_at": "2026-08-15T11:42:30.368366Z",
+          "method_name": "genar.analyses.volume.compute_volume_summary",
+          "contributing_cases_count": 1024,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Total unique canonical adverse event cases evaluated.",
+        "table_representation": null
+      },
+      "reporting_period": {
+        "evidence_id": "ev_reporting_period",
+        "title": "Reporting Period Interval",
+        "metric_key": "reporting_period",
+        "value": "2024-12-27 to 2025-12-26",
+        "formatted_value": "2024-12-27 to 2025-12-26",
+        "provenance": {
+          "analysis_id": "total_case_volume",
+          "version": "1.0",
+          "category": "volume",
+          "calculated_at": "2026-08-15T11:42:30.368366Z",
+          "method_name": "genar.analyses.volume.compute_volume_summary",
+          "contributing_cases_count": 1024,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Inclusive date interval of received adverse event reports.",
+        "table_representation": null
+      },
+      "serious_case_count": {
+        "evidence_id": "ev_serious_case_count",
+        "title": "Serious Case Count",
+        "metric_key": "serious_cases",
+        "value": 1023,
+        "formatted_value": "1,023 (99.9%)",
+        "provenance": {
+          "analysis_id": "seriousness_breakdown",
+          "version": "1.0",
+          "category": "seriousness",
+          "calculated_at": "2026-08-15T11:42:30.358824Z",
+          "method_name": "genar.analyses.seriousness.compute_seriousness_breakdown",
+          "contributing_cases_count": 1023,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Count and proportion of cases meeting regulatory seriousness criteria.",
+        "table_representation": null
+      },
+      "non_serious_case_count": {
+        "evidence_id": "ev_non_serious_case_count",
+        "title": "Non-Serious Case Count",
+        "metric_key": "non_serious_cases",
+        "value": 1,
+        "formatted_value": "1 (0.1%)",
+        "provenance": {
+          "analysis_id": "seriousness_breakdown",
+          "version": "1.0",
+          "category": "seriousness",
+          "calculated_at": "2026-08-15T11:42:30.358824Z",
+          "method_name": "genar.analyses.seriousness.compute_seriousness_breakdown",
+          "contributing_cases_count": 1023,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Count and proportion of non-serious cases.",
+        "table_representation": null
+      },
+      "fifteen_day_alert_count": {
+        "evidence_id": "ev_fifteen_day_alerts",
+        "title": "15-Day Expedited Alert Reports",
+        "metric_key": "fifteen_day_alerts_count",
+        "value": 1023,
+        "formatted_value": "1,023 cases (99.9%)",
+        "provenance": {
+          "analysis_id": "fifteen_day_alerts",
+          "version": "1.0",
+          "category": "alerts",
+          "calculated_at": "2026-08-15T11:42:30.300729Z",
+          "method_name": "genar.analyses.alerts.compute_15_day_alerts",
+          "contributing_cases_count": 1023,
+          "sample_case_ids": [
+            "24803117",
+            "25444366",
+            "25286895",
+            "25895271",
+            "25547806"
+          ]
+        },
+        "description": "Cases meeting expedited 15-day alert reporting criteria.",
+        "table_representation": null
+      }
+    },
+    "summary_metrics": {
+      "total_cases": 1024,
+      "total_reactions": 3429,
+      "reporting_period_start": "2024-12-27",
+      "reporting_period_end": "2025-12-26",
+      "serious_cases": 1023,
+      "serious_percent": 99.9,
+      "non_serious_cases": 1,
+      "non_serious_percent": 0.1,
+      "fatalities_count": 68,
+      "fifteen_day_alerts": 1023,
+      "product_name": "Bisoprolol",
+      "active_substance": "Bisoprolol Fumarate",
+      "manufacturer": "Aurobindo Pharma"
+    },
+    "table_data": null,
+    "non_invention_notes": [],
+    "created_at": "2026-08-15T11:42:30.369504Z"
+  },
+  "fifteen_day_alerts": {
+    "section_id": "fifteen_day_alerts",
+    "section_title": "2. 15-Day Alert Reports",
+    "dataset_name": "bisoprolol_sample_2024",
+    "reporting_period": "2024-12-27 to 2025-12-26",
+    "items": {
+      "fifteen_day_alerts_breakdown": {
+        "evidence_id": "ev_fifteen_day_details",
+        "title": "15-Day Alert Details & Top Events",
+        "metric_key": "top_reactions_in_alerts",
+        "value": {
+          "Acute kidney injury": 80,
+          "Drug ineffective": 53,
+          "Hypotension": 46,
+          "Drug interaction": 43,
+          "Dyspnoea": 38,
+          "Bradycardia": 37,
+          "Dizziness": 36,
+          "Fatigue": 33,
+          "Off label use": 31,
+          "Fall": 30
+        },
+        "formatted_value": "{'Acute kidney injury': 80, 'Drug ineffective': 53, 'Hypotension': 46, 'Drug interaction': 43, 'Dyspnoea': 38, 'Bradycardia': 37, 'Dizziness': 36, 'Fatigue': 33, 'Off label use': 31, 'Fall': 30}",
+        "provenance": {
+          "analysis_id": "fifteen_day_alerts",
+          "version": "1.0",
+          "category": "alerts",
+          "calculated_at": "2026-08-15T11:42:30.300729Z",
+          "method_name": "genar.analyses.alerts.compute_15_day_alerts",
+          "contributing_cases_count": 1023,
+          "sample_case_ids": [
+            "24803117",
+            "25444366",
+            "25286895",
+            "25895271",
+            "25547806"
+          ]
+        },
+        "description": "Top adverse events reported among 15-day alert cases.",
+        "table_representation": null
+      }
+    },
+    "summary_metrics": {
+      "product_name": "Bisoprolol",
+      "active_substance": "Bisoprolol Fumarate",
+      "manufacturer": "Aurobindo Pharma"
+    },
+    "table_data": [
+      {
+        "preferred_term": "Acute kidney injury",
+        "alert_events_count": 80
+      },
+      {
+        "preferred_term": "Drug ineffective",
+        "alert_events_count": 53
+      },
+      {
+        "preferred_term": "Hypotension",
+        "alert_events_count": 46
+      },
+      {
+        "preferred_term": "Drug interaction",
+        "alert_events_count": 43
+      },
+      {
+        "preferred_term": "Dyspnoea",
+        "alert_events_count": 38
+      },
+      {
+        "preferred_term": "Bradycardia",
+        "alert_events_count": 37
+      },
+      {
+        "preferred_term": "Dizziness",
+        "alert_events_count": 36
+      },
+      {
+        "preferred_term": "Fatigue",
+        "alert_events_count": 33
+      },
+      {
+        "preferred_term": "Off label use",
+        "alert_events_count": 31
+      },
+      {
+        "preferred_term": "Fall",
+        "alert_events_count": 30
+      }
+    ],
+    "non_invention_notes": [
+      "Only report cases explicitly matching 15-day alert criteria.",
+      "Do not extrapolate unverified causality."
+    ],
+    "created_at": "2026-08-15T11:42:30.369618Z"
+  },
+  "serious_cases_breakdown": {
+    "section_id": "serious_cases_breakdown",
+    "section_title": "3. Analysis of Serious Adverse Events",
+    "dataset_name": "bisoprolol_sample_2024",
+    "reporting_period": "2024-12-27 to 2025-12-26",
+    "items": {
+      "seriousness_criteria_counts": {
+        "evidence_id": "ev_seriousness_criteria",
+        "title": "Seriousness Criteria Breakdown",
+        "metric_key": "criteria",
+        "value": {
+          "death_count": 68,
+          "death_percent": 6.64,
+          "life_threatening_count": 105,
+          "life_threatening_percent": 10.25,
+          "hospitalization_count": 482,
+          "hospitalization_percent": 47.07,
+          "disabling_count": 44,
+          "disabling_percent": 4.3,
+          "congenital_anomaly_count": 7,
+          "congenital_anomaly_percent": 0.68,
+          "other_medically_important_count": 905,
+          "other_medically_important_percent": 88.38
+        },
+        "formatted_value": "Hospitalization: 482, Death: 68",
+        "provenance": {
+          "analysis_id": "seriousness_breakdown",
+          "version": "1.0",
+          "category": "seriousness",
+          "calculated_at": "2026-08-15T11:42:30.358824Z",
+          "method_name": "genar.analyses.seriousness.compute_seriousness_breakdown",
+          "contributing_cases_count": 1023,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Discrete counts across individual regulatory seriousness criteria.",
+        "table_representation": [
+          {
+            "criteria": "Death",
+            "key": "death",
+            "count": 68,
+            "percent_of_total": 6.64,
+            "percent_of_serious": 6.65
+          },
+          {
+            "criteria": "Life-Threatening",
+            "key": "life_threatening",
+            "count": 105,
+            "percent_of_total": 10.25,
+            "percent_of_serious": 10.26
+          },
+          {
+            "criteria": "Hospitalization / Prolonged",
+            "key": "hospitalization",
+            "count": 482,
+            "percent_of_total": 47.07,
+            "percent_of_serious": 47.12
+          },
+          {
+            "criteria": "Disability / Incapacity",
+            "key": "disabling",
+            "count": 44,
+            "percent_of_total": 4.3,
+            "percent_of_serious": 4.3
+          },
+          {
+            "criteria": "Congenital Anomaly",
+            "key": "congenital_anomaly",
+            "count": 7,
+            "percent_of_total": 0.68,
+            "percent_of_serious": 0.68
+          },
+          {
+            "criteria": "Other Medically Important Condition",
+            "key": "other_medically_important",
+            "count": 905,
+            "percent_of_total": 88.38,
+            "percent_of_serious": 88.47
+          }
+        ]
+      }
+    },
+    "summary_metrics": {
+      "product_name": "Bisoprolol",
+      "active_substance": "Bisoprolol Fumarate",
+      "manufacturer": "Aurobindo Pharma"
+    },
+    "table_data": [
+      {
+        "criteria": "Death",
+        "key": "death",
+        "count": 68,
+        "percent_of_total": 6.64,
+        "percent_of_serious": 6.65
+      },
+      {
+        "criteria": "Life-Threatening",
+        "key": "life_threatening",
+        "count": 105,
+        "percent_of_total": 10.25,
+        "percent_of_serious": 10.26
+      },
+      {
+        "criteria": "Hospitalization / Prolonged",
+        "key": "hospitalization",
+        "count": 482,
+        "percent_of_total": 47.07,
+        "percent_of_serious": 47.12
+      },
+      {
+        "criteria": "Disability / Incapacity",
+        "key": "disabling",
+        "count": 44,
+        "percent_of_total": 4.3,
+        "percent_of_serious": 4.3
+      },
+      {
+        "criteria": "Congenital Anomaly",
+        "key": "congenital_anomaly",
+        "count": 7,
+        "percent_of_total": 0.68,
+        "percent_of_serious": 0.68
+      },
+      {
+        "criteria": "Other Medically Important Condition",
+        "key": "other_medically_important",
+        "count": 905,
+        "percent_of_total": 88.38,
+        "percent_of_serious": 88.47
+      }
+    ],
+    "non_invention_notes": [
+      "Sum of criteria may exceed total serious cases because individual cases may meet multiple criteria.",
+      "Do not invent additional seriousness categories."
+    ],
+    "created_at": "2026-08-15T11:42:30.369664Z"
+  },
+  "demographics": {
+    "section_id": "demographics",
+    "section_title": "4. Demographic Distribution",
+    "dataset_name": "bisoprolol_sample_2024",
+    "reporting_period": "2024-12-27 to 2025-12-26",
+    "items": {
+      "demographics_summary": {
+        "evidence_id": "ev_demographics",
+        "title": "Demographic Distribution Summary",
+        "metric_key": "sex_distribution",
+        "value": {
+          "sex": {
+            "FEMALE": 503,
+            "MALE": 493,
+            "UNKNOWN": 28
+          },
+          "age_groups": {
+            "Elderly (65+)": 676,
+            "Adult (18-64)": 249,
+            "UNKNOWN": 83,
+            "Pediatric (<18)": 16
+          },
+          "age_stats": {
+            "mean_age": 70.07,
+            "median_age": 73.0,
+            "min_age": 1.0,
+            "max_age": 104.0,
+            "std_age": 15.89,
+            "reported_age_count": 941,
+            "missing_age_count": 83
+          },
+          "countries": {
+            "EU": 345,
+            "UNITED KINGDOM": 281,
+            "FRANCE": 185,
+            "CANADA": 56,
+            "ITALY": 51,
+            "GERMANY": 33,
+            "SPAIN": 24,
+            "POLAND": 18,
+            "PORTUGAL": 8,
+            "UNITED STATES": 4,
+            "OTHER_COUNTRIES": 19
+          }
+        },
+        "formatted_value": "Sex: {'FEMALE': 503, 'MALE': 493, 'UNKNOWN': 28}, Elderly: 676",
+        "provenance": {
+          "analysis_id": "demographics_breakdown",
+          "version": "1.0",
+          "category": "demographics",
+          "calculated_at": "2026-08-15T11:42:30.305984Z",
+          "method_name": "genar.analyses.demographics.compute_demographics_breakdown",
+          "contributing_cases_count": 1024,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Sex, age bucket, age summary stats, and geographic distribution.",
+        "table_representation": [
+          {
+            "category": "Sex",
+            "subcategory": "FEMALE",
+            "count": 503,
+            "percent": 49.12
+          },
+          {
+            "category": "Sex",
+            "subcategory": "MALE",
+            "count": 493,
+            "percent": 48.14
+          },
+          {
+            "category": "Sex",
+            "subcategory": "UNKNOWN",
+            "count": 28,
+            "percent": 2.73
+          },
+          {
+            "category": "Age Group",
+            "subcategory": "Elderly (65+)",
+            "count": 676,
+            "percent": 66.02
+          },
+          {
+            "category": "Age Group",
+            "subcategory": "Adult (18-64)",
+            "count": 249,
+            "percent": 24.32
+          },
+          {
+            "category": "Age Group",
+            "subcategory": "UNKNOWN",
+            "count": 83,
+            "percent": 8.11
+          },
+          {
+            "category": "Age Group",
+            "subcategory": "Pediatric (<18)",
+            "count": 16,
+            "percent": 1.56
+          },
+          {
+            "category": "Country",
+            "subcategory": "EU",
+            "count": 345,
+            "percent": 33.69
+          },
+          {
+            "category": "Country",
+            "subcategory": "UNITED KINGDOM",
+            "count": 281,
+            "percent": 27.44
+          },
+          {
+            "category": "Country",
+            "subcategory": "FRANCE",
+            "count": 185,
+            "percent": 18.07
+          },
+          {
+            "category": "Country",
+            "subcategory": "CANADA",
+            "count": 56,
+            "percent": 5.47
+          },
+          {
+            "category": "Country",
+            "subcategory": "ITALY",
+            "count": 51,
+            "percent": 4.98
+          },
+          {
+            "category": "Country",
+            "subcategory": "GERMANY",
+            "count": 33,
+            "percent": 3.22
+          },
+          {
+            "category": "Country",
+            "subcategory": "SPAIN",
+            "count": 24,
+            "percent": 2.34
+          },
+          {
+            "category": "Country",
+            "subcategory": "POLAND",
+            "count": 18,
+            "percent": 1.76
+          },
+          {
+            "category": "Country",
+            "subcategory": "PORTUGAL",
+            "count": 8,
+            "percent": 0.78
+          },
+          {
+            "category": "Country",
+            "subcategory": "UNITED STATES",
+            "count": 4,
+            "percent": 0.39
+          },
+          {
+            "category": "Country",
+            "subcategory": "OTHER_COUNTRIES",
+            "count": 19,
+            "percent": 1.86
+          }
+        ]
+      }
+    },
+    "summary_metrics": {
+      "product_name": "Bisoprolol",
+      "active_substance": "Bisoprolol Fumarate",
+      "manufacturer": "Aurobindo Pharma"
+    },
+    "table_data": [
+      {
+        "category": "Sex",
+        "subcategory": "FEMALE",
+        "count": 503,
+        "percent": 49.12
+      },
+      {
+        "category": "Sex",
+        "subcategory": "MALE",
+        "count": 493,
+        "percent": 48.14
+      },
+      {
+        "category": "Sex",
+        "subcategory": "UNKNOWN",
+        "count": 28,
+        "percent": 2.73
+      },
+      {
+        "category": "Age Group",
+        "subcategory": "Elderly (65+)",
+        "count": 676,
+        "percent": 66.02
+      },
+      {
+        "category": "Age Group",
+        "subcategory": "Adult (18-64)",
+        "count": 249,
+        "percent": 24.32
+      },
+      {
+        "category": "Age Group",
+        "subcategory": "UNKNOWN",
+        "count": 83,
+        "percent": 8.11
+      },
+      {
+        "category": "Age Group",
+        "subcategory": "Pediatric (<18)",
+        "count": 16,
+        "percent": 1.56
+      },
+      {
+        "category": "Country",
+        "subcategory": "EU",
+        "count": 345,
+        "percent": 33.69
+      },
+      {
+        "category": "Country",
+        "subcategory": "UNITED KINGDOM",
+        "count": 281,
+        "percent": 27.44
+      },
+      {
+        "category": "Country",
+        "subcategory": "FRANCE",
+        "count": 185,
+        "percent": 18.07
+      },
+      {
+        "category": "Country",
+        "subcategory": "CANADA",
+        "count": 56,
+        "percent": 5.47
+      },
+      {
+        "category": "Country",
+        "subcategory": "ITALY",
+        "count": 51,
+        "percent": 4.98
+      },
+      {
+        "category": "Country",
+        "subcategory": "GERMANY",
+        "count": 33,
+        "percent": 3.22
+      },
+      {
+        "category": "Country",
+        "subcategory": "SPAIN",
+        "count": 24,
+        "percent": 2.34
+      },
+      {
+        "category": "Country",
+        "subcategory": "POLAND",
+        "count": 18,
+        "percent": 1.76
+      },
+      {
+        "category": "Country",
+        "subcategory": "PORTUGAL",
+        "count": 8,
+        "percent": 0.78
+      },
+      {
+        "category": "Country",
+        "subcategory": "UNITED STATES",
+        "count": 4,
+        "percent": 0.39
+      },
+      {
+        "category": "Country",
+        "subcategory": "OTHER_COUNTRIES",
+        "count": 19,
+        "percent": 1.86
+      }
+    ],
+    "non_invention_notes": [],
+    "created_at": "2026-08-15T11:42:30.369728Z"
+  },
+  "reactions_and_outcomes": {
+    "section_id": "reactions_and_outcomes",
+    "section_title": "5. Adverse Reactions and Outcomes",
+    "dataset_name": "bisoprolol_sample_2024",
+    "reporting_period": "2024-12-27 to 2025-12-26",
+    "items": {
+      "top_adverse_reactions": {
+        "evidence_id": "ev_top_reactions",
+        "title": "Top Adverse Drug Reactions",
+        "metric_key": "top_reactions_overall",
+        "value": [
+          {
+            "rank": 1,
+            "preferred_term": "Acute kidney injury",
+            "event_count": 80,
+            "event_percent": 2.33,
+            "distinct_cases_count": 80,
+            "case_percent": 7.81
+          },
+          {
+            "rank": 2,
+            "preferred_term": "Drug ineffective",
+            "event_count": 54,
+            "event_percent": 1.57,
+            "distinct_cases_count": 54,
+            "case_percent": 5.27
+          },
+          {
+            "rank": 3,
+            "preferred_term": "Hypotension",
+            "event_count": 46,
+            "event_percent": 1.34,
+            "distinct_cases_count": 46,
+            "case_percent": 4.49
+          },
+          {
+            "rank": 4,
+            "preferred_term": "Drug interaction",
+            "event_count": 43,
+            "event_percent": 1.25,
+            "distinct_cases_count": 43,
+            "case_percent": 4.2
+          },
+          {
+            "rank": 5,
+            "preferred_term": "Dyspnoea",
+            "event_count": 38,
+            "event_percent": 1.11,
+            "distinct_cases_count": 38,
+            "case_percent": 3.71
+          },
+          {
+            "rank": 6,
+            "preferred_term": "Bradycardia",
+            "event_count": 37,
+            "event_percent": 1.08,
+            "distinct_cases_count": 37,
+            "case_percent": 3.61
+          },
+          {
+            "rank": 7,
+            "preferred_term": "Dizziness",
+            "event_count": 36,
+            "event_percent": 1.05,
+            "distinct_cases_count": 36,
+            "case_percent": 3.52
+          },
+          {
+            "rank": 8,
+            "preferred_term": "Fatigue",
+            "event_count": 33,
+            "event_percent": 0.96,
+            "distinct_cases_count": 33,
+            "case_percent": 3.22
+          },
+          {
+            "rank": 9,
+            "preferred_term": "Off label use",
+            "event_count": 31,
+            "event_percent": 0.9,
+            "distinct_cases_count": 31,
+            "case_percent": 3.03
+          },
+          {
+            "rank": 10,
+            "preferred_term": "Fall",
+            "event_count": 30,
+            "event_percent": 0.87,
+            "distinct_cases_count": 30,
+            "case_percent": 2.93
+          },
+          {
+            "rank": 11,
+            "preferred_term": "Diarrhoea",
+            "event_count": 30,
+            "event_percent": 0.87,
+            "distinct_cases_count": 30,
+            "case_percent": 2.93
+          },
+          {
+            "rank": 12,
+            "preferred_term": "Condition aggravated",
+            "event_count": 27,
+            "event_percent": 0.79,
+            "distinct_cases_count": 27,
+            "case_percent": 2.64
+          },
+          {
+            "rank": 13,
+            "preferred_term": "Hypokalaemia",
+            "event_count": 27,
+            "event_percent": 0.79,
+            "distinct_cases_count": 27,
+            "case_percent": 2.64
+          },
+          {
+            "rank": 14,
+            "preferred_term": "Medication error",
+            "event_count": 25,
+            "event_percent": 0.73,
+            "distinct_cases_count": 25,
+            "case_percent": 2.44
+          },
+          {
+            "rank": 15,
+            "preferred_term": "Asthenia",
+            "event_count": 25,
+            "event_percent": 0.73,
+            "distinct_cases_count": 25,
+            "case_percent": 2.44
+          }
+        ],
+        "formatted_value": "1122 unique PTs reported",
+        "provenance": {
+          "analysis_id": "reactions_analysis",
+          "version": "1.0",
+          "category": "reactions",
+          "calculated_at": "2026-08-15T11:42:30.356891Z",
+          "method_name": "genar.analyses.reactions.compute_reactions_analysis",
+          "contributing_cases_count": 1024,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Top reported MedDRA preferred terms ranked by event frequency and case count.",
+        "table_representation": [
+          {
+            "rank": 1,
+            "preferred_term": "Acute kidney injury",
+            "event_count": 80,
+            "event_percent": 2.33,
+            "distinct_cases_count": 80,
+            "case_percent": 7.81
+          },
+          {
+            "rank": 2,
+            "preferred_term": "Drug ineffective",
+            "event_count": 54,
+            "event_percent": 1.57,
+            "distinct_cases_count": 54,
+            "case_percent": 5.27
+          },
+          {
+            "rank": 3,
+            "preferred_term": "Hypotension",
+            "event_count": 46,
+            "event_percent": 1.34,
+            "distinct_cases_count": 46,
+            "case_percent": 4.49
+          },
+          {
+            "rank": 4,
+            "preferred_term": "Drug interaction",
+            "event_count": 43,
+            "event_percent": 1.25,
+            "distinct_cases_count": 43,
+            "case_percent": 4.2
+          },
+          {
+            "rank": 5,
+            "preferred_term": "Dyspnoea",
+            "event_count": 38,
+            "event_percent": 1.11,
+            "distinct_cases_count": 38,
+            "case_percent": 3.71
+          },
+          {
+            "rank": 6,
+            "preferred_term": "Bradycardia",
+            "event_count": 37,
+            "event_percent": 1.08,
+            "distinct_cases_count": 37,
+            "case_percent": 3.61
+          },
+          {
+            "rank": 7,
+            "preferred_term": "Dizziness",
+            "event_count": 36,
+            "event_percent": 1.05,
+            "distinct_cases_count": 36,
+            "case_percent": 3.52
+          },
+          {
+            "rank": 8,
+            "preferred_term": "Fatigue",
+            "event_count": 33,
+            "event_percent": 0.96,
+            "distinct_cases_count": 33,
+            "case_percent": 3.22
+          },
+          {
+            "rank": 9,
+            "preferred_term": "Off label use",
+            "event_count": 31,
+            "event_percent": 0.9,
+            "distinct_cases_count": 31,
+            "case_percent": 3.03
+          },
+          {
+            "rank": 10,
+            "preferred_term": "Fall",
+            "event_count": 30,
+            "event_percent": 0.87,
+            "distinct_cases_count": 30,
+            "case_percent": 2.93
+          },
+          {
+            "rank": 11,
+            "preferred_term": "Diarrhoea",
+            "event_count": 30,
+            "event_percent": 0.87,
+            "distinct_cases_count": 30,
+            "case_percent": 2.93
+          },
+          {
+            "rank": 12,
+            "preferred_term": "Condition aggravated",
+            "event_count": 27,
+            "event_percent": 0.79,
+            "distinct_cases_count": 27,
+            "case_percent": 2.64
+          },
+          {
+            "rank": 13,
+            "preferred_term": "Hypokalaemia",
+            "event_count": 27,
+            "event_percent": 0.79,
+            "distinct_cases_count": 27,
+            "case_percent": 2.64
+          },
+          {
+            "rank": 14,
+            "preferred_term": "Medication error",
+            "event_count": 25,
+            "event_percent": 0.73,
+            "distinct_cases_count": 25,
+            "case_percent": 2.44
+          },
+          {
+            "rank": 15,
+            "preferred_term": "Asthenia",
+            "event_count": 25,
+            "event_percent": 0.73,
+            "distinct_cases_count": 25,
+            "case_percent": 2.44
+          }
+        ]
+      },
+      "reaction_outcomes_summary": {
+        "evidence_id": "ev_reaction_outcomes",
+        "title": "Reaction Outcome Breakdown",
+        "metric_key": "outcome_distribution",
+        "value": {
+          "recovered/resolved": 1257,
+          "unknown": 1028,
+          "not recovered/not resolved/ongoing": 512,
+          "recovering/resolving": 406,
+          "fatal": 134,
+          "recovered/resolved with sequelae": 34
+        },
+        "formatted_value": "Resolved: 1257, Fatal: 134",
+        "provenance": {
+          "analysis_id": "outcomes_analysis",
+          "version": "1.0",
+          "category": "outcomes",
+          "calculated_at": "2026-08-15T11:42:30.329866Z",
+          "method_name": "genar.analyses.outcomes.compute_outcomes_analysis",
+          "contributing_cases_count": 1018,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Cross-tabulation of positionally valid reactions with clinical outcomes.",
+        "table_representation": [
+          {
+            "preferred_term": "Acute kidney injury",
+            "total_events": 79,
+            "recovered_resolved": 44,
+            "recovering": 14,
+            "not_recovered": 4,
+            "fatal": 7,
+            "unknown": 8,
+            "sequelae": 2
+          },
+          {
+            "preferred_term": "Drug ineffective",
+            "total_events": 54,
+            "recovered_resolved": 7,
+            "recovering": 5,
+            "not_recovered": 2,
+            "fatal": 0,
+            "unknown": 40,
+            "sequelae": 0
+          },
+          {
+            "preferred_term": "Hypotension",
+            "total_events": 46,
+            "recovered_resolved": 24,
+            "recovering": 8,
+            "not_recovered": 3,
+            "fatal": 1,
+            "unknown": 9,
+            "sequelae": 1
+          },
+          {
+            "preferred_term": "Drug interaction",
+            "total_events": 42,
+            "recovered_resolved": 18,
+            "recovering": 1,
+            "not_recovered": 1,
+            "fatal": 1,
+            "unknown": 21,
+            "sequelae": 0
+          },
+          {
+            "preferred_term": "Dyspnoea",
+            "total_events": 38,
+            "recovered_resolved": 14,
+            "recovering": 4,
+            "not_recovered": 5,
+            "fatal": 3,
+            "unknown": 10,
+            "sequelae": 2
+          },
+          {
+            "preferred_term": "Bradycardia",
+            "total_events": 37,
+            "recovered_resolved": 21,
+            "recovering": 5,
+            "not_recovered": 2,
+            "fatal": 0,
+            "unknown": 8,
+            "sequelae": 1
+          },
+          {
+            "preferred_term": "Dizziness",
+            "total_events": 36,
+            "recovered_resolved": 16,
+            "recovering": 2,
+            "not_recovered": 6,
+            "fatal": 0,
+            "unknown": 11,
+            "sequelae": 1
+          },
+          {
+            "preferred_term": "Fatigue",
+            "total_events": 33,
+            "recovered_resolved": 7,
+            "recovering": 4,
+            "not_recovered": 12,
+            "fatal": 0,
+            "unknown": 10,
+            "sequelae": 0
+          },
+          {
+            "preferred_term": "Off label use",
+            "total_events": 31,
+            "recovered_resolved": 9,
+            "recovering": 1,
+            "not_recovered": 2,
+            "fatal": 0,
+            "unknown": 19,
+            "sequelae": 0
+          },
+          {
+            "preferred_term": "Diarrhoea",
+            "total_events": 30,
+            "recovered_resolved": 12,
+            "recovering": 5,
+            "not_recovered": 7,
+            "fatal": 1,
+            "unknown": 5,
+            "sequelae": 0
+          }
+        ]
+      }
+    },
+    "summary_metrics": {
+      "product_name": "Bisoprolol",
+      "active_substance": "Bisoprolol Fumarate",
+      "manufacturer": "Aurobindo Pharma"
+    },
+    "table_data": [
+      {
+        "preferred_term": "Acute kidney injury",
+        "total_events": 79,
+        "recovered_resolved": 44,
+        "recovering": 14,
+        "not_recovered": 4,
+        "fatal": 7,
+        "unknown": 8,
+        "sequelae": 2
+      },
+      {
+        "preferred_term": "Drug ineffective",
+        "total_events": 54,
+        "recovered_resolved": 7,
+        "recovering": 5,
+        "not_recovered": 2,
+        "fatal": 0,
+        "unknown": 40,
+        "sequelae": 0
+      },
+      {
+        "preferred_term": "Hypotension",
+        "total_events": 46,
+        "recovered_resolved": 24,
+        "recovering": 8,
+        "not_recovered": 3,
+        "fatal": 1,
+        "unknown": 9,
+        "sequelae": 1
+      },
+      {
+        "preferred_term": "Drug interaction",
+        "total_events": 42,
+        "recovered_resolved": 18,
+        "recovering": 1,
+        "not_recovered": 1,
+        "fatal": 1,
+        "unknown": 21,
+        "sequelae": 0
+      },
+      {
+        "preferred_term": "Dyspnoea",
+        "total_events": 38,
+        "recovered_resolved": 14,
+        "recovering": 4,
+        "not_recovered": 5,
+        "fatal": 3,
+        "unknown": 10,
+        "sequelae": 2
+      },
+      {
+        "preferred_term": "Bradycardia",
+        "total_events": 37,
+        "recovered_resolved": 21,
+        "recovering": 5,
+        "not_recovered": 2,
+        "fatal": 0,
+        "unknown": 8,
+        "sequelae": 1
+      },
+      {
+        "preferred_term": "Dizziness",
+        "total_events": 36,
+        "recovered_resolved": 16,
+        "recovering": 2,
+        "not_recovered": 6,
+        "fatal": 0,
+        "unknown": 11,
+        "sequelae": 1
+      },
+      {
+        "preferred_term": "Fatigue",
+        "total_events": 33,
+        "recovered_resolved": 7,
+        "recovering": 4,
+        "not_recovered": 12,
+        "fatal": 0,
+        "unknown": 10,
+        "sequelae": 0
+      },
+      {
+        "preferred_term": "Off label use",
+        "total_events": 31,
+        "recovered_resolved": 9,
+        "recovering": 1,
+        "not_recovered": 2,
+        "fatal": 0,
+        "unknown": 19,
+        "sequelae": 0
+      },
+      {
+        "preferred_term": "Diarrhoea",
+        "total_events": 30,
+        "recovered_resolved": 12,
+        "recovering": 5,
+        "not_recovered": 7,
+        "fatal": 1,
+        "unknown": 5,
+        "sequelae": 0
+      }
+    ],
+    "non_invention_notes": [],
+    "created_at": "2026-08-15T11:42:30.369818Z"
+  },
+  "trend_analysis": {
+    "section_id": "trend_analysis",
+    "section_title": "6. Interval Trend Analysis",
+    "dataset_name": "bisoprolol_sample_2024",
+    "reporting_period": "2024-12-27 to 2025-12-26",
+    "items": {
+      "interval_trends": {
+        "evidence_id": "ev_interval_trends",
+        "title": "Monthly Trends & Candidate Anomalies",
+        "metric_key": "monthly_counts",
+        "value": {
+          "monthly_counts": {
+            "2024-12": 21,
+            "2025-01": 75,
+            "2025-02": 94,
+            "2025-03": 83,
+            "2025-04": 78,
+            "2025-05": 80,
+            "2025-06": 84,
+            "2025-07": 109,
+            "2025-08": 64,
+            "2025-09": 76,
+            "2025-10": 102,
+            "2025-11": 75,
+            "2025-12": 83
+          },
+          "candidate_anomalies": [
+            {
+              "month": "2024-12",
+              "count": 21,
+              "z_score": -2.85,
+              "type": "VOLUME_DIP",
+              "description": "VOLUME_DIP detected in 2024-12: 21 cases (mean: 78.8, Z-score: -2.85)."
+            }
+          ]
+        },
+        "formatted_value": "13 months analyzed; 1 statistical anomalies flagged",
+        "provenance": {
+          "analysis_id": "interval_trends",
+          "version": "1.0",
+          "category": "trends",
+          "calculated_at": "2026-08-15T11:42:30.365232Z",
+          "method_name": "genar.analyses.trends.compute_interval_trends",
+          "contributing_cases_count": 1024,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Monthly case volumes and candidate statistical anomalies.",
+        "table_representation": [
+          {
+            "month": "2024-12",
+            "count": 21,
+            "mom_change_pct": null,
+            "z_score": -2.85,
+            "is_anomaly_candidate": true
+          },
+          {
+            "month": "2025-01",
+            "count": 75,
+            "mom_change_pct": 257.14,
+            "z_score": -0.19,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-02",
+            "count": 94,
+            "mom_change_pct": 25.33,
+            "z_score": 0.75,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-03",
+            "count": 83,
+            "mom_change_pct": -11.7,
+            "z_score": 0.21,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-04",
+            "count": 78,
+            "mom_change_pct": -6.02,
+            "z_score": -0.04,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-05",
+            "count": 80,
+            "mom_change_pct": 2.56,
+            "z_score": 0.06,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-06",
+            "count": 84,
+            "mom_change_pct": 5.0,
+            "z_score": 0.26,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-07",
+            "count": 109,
+            "mom_change_pct": 29.76,
+            "z_score": 1.49,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-08",
+            "count": 64,
+            "mom_change_pct": -41.28,
+            "z_score": -0.73,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-09",
+            "count": 76,
+            "mom_change_pct": 18.75,
+            "z_score": -0.14,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-10",
+            "count": 102,
+            "mom_change_pct": 34.21,
+            "z_score": 1.15,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-11",
+            "count": 75,
+            "mom_change_pct": -26.47,
+            "z_score": -0.19,
+            "is_anomaly_candidate": false
+          },
+          {
+            "month": "2025-12",
+            "count": 83,
+            "mom_change_pct": 10.67,
+            "z_score": 0.21,
+            "is_anomaly_candidate": false
+          }
+        ]
+      }
+    },
+    "summary_metrics": {
+      "product_name": "Bisoprolol",
+      "active_substance": "Bisoprolol Fumarate",
+      "manufacturer": "Aurobindo Pharma"
+    },
+    "table_data": [
+      {
+        "month": "2024-12",
+        "count": 21,
+        "mom_change_pct": null,
+        "z_score": -2.85,
+        "is_anomaly_candidate": true
+      },
+      {
+        "month": "2025-01",
+        "count": 75,
+        "mom_change_pct": 257.14,
+        "z_score": -0.19,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-02",
+        "count": 94,
+        "mom_change_pct": 25.33,
+        "z_score": 0.75,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-03",
+        "count": 83,
+        "mom_change_pct": -11.7,
+        "z_score": 0.21,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-04",
+        "count": 78,
+        "mom_change_pct": -6.02,
+        "z_score": -0.04,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-05",
+        "count": 80,
+        "mom_change_pct": 2.56,
+        "z_score": 0.06,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-06",
+        "count": 84,
+        "mom_change_pct": 5.0,
+        "z_score": 0.26,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-07",
+        "count": 109,
+        "mom_change_pct": 29.76,
+        "z_score": 1.49,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-08",
+        "count": 64,
+        "mom_change_pct": -41.28,
+        "z_score": -0.73,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-09",
+        "count": 76,
+        "mom_change_pct": 18.75,
+        "z_score": -0.14,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-10",
+        "count": 102,
+        "mom_change_pct": 34.21,
+        "z_score": 1.15,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-11",
+        "count": 75,
+        "mom_change_pct": -26.47,
+        "z_score": -0.19,
+        "is_anomaly_candidate": false
+      },
+      {
+        "month": "2025-12",
+        "count": 83,
+        "mom_change_pct": 10.67,
+        "z_score": 0.21,
+        "is_anomaly_candidate": false
+      }
+    ],
+    "non_invention_notes": [
+      "Only discuss trends flagged as statistically notable by Python analysis.",
+      "Do not claim new safety signals unless explicitly confirmed in evidence."
+    ],
+    "created_at": "2026-08-15T11:42:30.369869Z"
+  },
+  "narrative_summary": {
+    "section_id": "narrative_summary",
+    "section_title": "7. Narrative Summary & Clinical Evaluation",
+    "dataset_name": "bisoprolol_sample_2024",
+    "reporting_period": "2024-12-27 to 2025-12-26",
+    "items": {
+      "total_case_volume": {
+        "evidence_id": "ev_total_case_volume",
+        "title": "Total Case Volume",
+        "metric_key": "total_cases",
+        "value": 1024,
+        "formatted_value": "1,024 cases",
+        "provenance": {
+          "analysis_id": "total_case_volume",
+          "version": "1.0",
+          "category": "volume",
+          "calculated_at": "2026-08-15T11:42:30.368366Z",
+          "method_name": "genar.analyses.volume.compute_volume_summary",
+          "contributing_cases_count": 1024,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Total unique canonical adverse event cases evaluated.",
+        "table_representation": null
+      },
+      "reporting_period": {
+        "evidence_id": "ev_reporting_period",
+        "title": "Reporting Period Interval",
+        "metric_key": "reporting_period",
+        "value": "2024-12-27 to 2025-12-26",
+        "formatted_value": "2024-12-27 to 2025-12-26",
+        "provenance": {
+          "analysis_id": "total_case_volume",
+          "version": "1.0",
+          "category": "volume",
+          "calculated_at": "2026-08-15T11:42:30.368366Z",
+          "method_name": "genar.analyses.volume.compute_volume_summary",
+          "contributing_cases_count": 1024,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Inclusive date interval of received adverse event reports.",
+        "table_representation": null
+      },
+      "serious_case_count": {
+        "evidence_id": "ev_serious_case_count",
+        "title": "Serious Case Count",
+        "metric_key": "serious_cases",
+        "value": 1023,
+        "formatted_value": "1,023 (99.9%)",
+        "provenance": {
+          "analysis_id": "seriousness_breakdown",
+          "version": "1.0",
+          "category": "seriousness",
+          "calculated_at": "2026-08-15T11:42:30.358824Z",
+          "method_name": "genar.analyses.seriousness.compute_seriousness_breakdown",
+          "contributing_cases_count": 1023,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Count and proportion of cases meeting regulatory seriousness criteria.",
+        "table_representation": null
+      },
+      "fifteen_day_alert_count": {
+        "evidence_id": "ev_fifteen_day_alerts",
+        "title": "15-Day Expedited Alert Reports",
+        "metric_key": "fifteen_day_alerts_count",
+        "value": 1023,
+        "formatted_value": "1,023 cases (99.9%)",
+        "provenance": {
+          "analysis_id": "fifteen_day_alerts",
+          "version": "1.0",
+          "category": "alerts",
+          "calculated_at": "2026-08-15T11:42:30.300729Z",
+          "method_name": "genar.analyses.alerts.compute_15_day_alerts",
+          "contributing_cases_count": 1023,
+          "sample_case_ids": [
+            "24803117",
+            "25444366",
+            "25286895",
+            "25895271",
+            "25547806"
+          ]
+        },
+        "description": "Cases meeting expedited 15-day alert reporting criteria.",
+        "table_representation": null
+      },
+      "top_adverse_reactions": {
+        "evidence_id": "ev_top_reactions",
+        "title": "Top Adverse Drug Reactions",
+        "metric_key": "top_reactions_overall",
+        "value": [
+          {
+            "rank": 1,
+            "preferred_term": "Acute kidney injury",
+            "event_count": 80,
+            "event_percent": 2.33,
+            "distinct_cases_count": 80,
+            "case_percent": 7.81
+          },
+          {
+            "rank": 2,
+            "preferred_term": "Drug ineffective",
+            "event_count": 54,
+            "event_percent": 1.57,
+            "distinct_cases_count": 54,
+            "case_percent": 5.27
+          },
+          {
+            "rank": 3,
+            "preferred_term": "Hypotension",
+            "event_count": 46,
+            "event_percent": 1.34,
+            "distinct_cases_count": 46,
+            "case_percent": 4.49
+          },
+          {
+            "rank": 4,
+            "preferred_term": "Drug interaction",
+            "event_count": 43,
+            "event_percent": 1.25,
+            "distinct_cases_count": 43,
+            "case_percent": 4.2
+          },
+          {
+            "rank": 5,
+            "preferred_term": "Dyspnoea",
+            "event_count": 38,
+            "event_percent": 1.11,
+            "distinct_cases_count": 38,
+            "case_percent": 3.71
+          },
+          {
+            "rank": 6,
+            "preferred_term": "Bradycardia",
+            "event_count": 37,
+            "event_percent": 1.08,
+            "distinct_cases_count": 37,
+            "case_percent": 3.61
+          },
+          {
+            "rank": 7,
+            "preferred_term": "Dizziness",
+            "event_count": 36,
+            "event_percent": 1.05,
+            "distinct_cases_count": 36,
+            "case_percent": 3.52
+          },
+          {
+            "rank": 8,
+            "preferred_term": "Fatigue",
+            "event_count": 33,
+            "event_percent": 0.96,
+            "distinct_cases_count": 33,
+            "case_percent": 3.22
+          },
+          {
+            "rank": 9,
+            "preferred_term": "Off label use",
+            "event_count": 31,
+            "event_percent": 0.9,
+            "distinct_cases_count": 31,
+            "case_percent": 3.03
+          },
+          {
+            "rank": 10,
+            "preferred_term": "Fall",
+            "event_count": 30,
+            "event_percent": 0.87,
+            "distinct_cases_count": 30,
+            "case_percent": 2.93
+          },
+          {
+            "rank": 11,
+            "preferred_term": "Diarrhoea",
+            "event_count": 30,
+            "event_percent": 0.87,
+            "distinct_cases_count": 30,
+            "case_percent": 2.93
+          },
+          {
+            "rank": 12,
+            "preferred_term": "Condition aggravated",
+            "event_count": 27,
+            "event_percent": 0.79,
+            "distinct_cases_count": 27,
+            "case_percent": 2.64
+          },
+          {
+            "rank": 13,
+            "preferred_term": "Hypokalaemia",
+            "event_count": 27,
+            "event_percent": 0.79,
+            "distinct_cases_count": 27,
+            "case_percent": 2.64
+          },
+          {
+            "rank": 14,
+            "preferred_term": "Medication error",
+            "event_count": 25,
+            "event_percent": 0.73,
+            "distinct_cases_count": 25,
+            "case_percent": 2.44
+          },
+          {
+            "rank": 15,
+            "preferred_term": "Asthenia",
+            "event_count": 25,
+            "event_percent": 0.73,
+            "distinct_cases_count": 25,
+            "case_percent": 2.44
+          }
+        ],
+        "formatted_value": "1122 unique PTs reported",
+        "provenance": {
+          "analysis_id": "reactions_analysis",
+          "version": "1.0",
+          "category": "reactions",
+          "calculated_at": "2026-08-15T11:42:30.356891Z",
+          "method_name": "genar.analyses.reactions.compute_reactions_analysis",
+          "contributing_cases_count": 1024,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Top reported MedDRA preferred terms ranked by event frequency and case count.",
+        "table_representation": [
+          {
+            "rank": 1,
+            "preferred_term": "Acute kidney injury",
+            "event_count": 80,
+            "event_percent": 2.33,
+            "distinct_cases_count": 80,
+            "case_percent": 7.81
+          },
+          {
+            "rank": 2,
+            "preferred_term": "Drug ineffective",
+            "event_count": 54,
+            "event_percent": 1.57,
+            "distinct_cases_count": 54,
+            "case_percent": 5.27
+          },
+          {
+            "rank": 3,
+            "preferred_term": "Hypotension",
+            "event_count": 46,
+            "event_percent": 1.34,
+            "distinct_cases_count": 46,
+            "case_percent": 4.49
+          },
+          {
+            "rank": 4,
+            "preferred_term": "Drug interaction",
+            "event_count": 43,
+            "event_percent": 1.25,
+            "distinct_cases_count": 43,
+            "case_percent": 4.2
+          },
+          {
+            "rank": 5,
+            "preferred_term": "Dyspnoea",
+            "event_count": 38,
+            "event_percent": 1.11,
+            "distinct_cases_count": 38,
+            "case_percent": 3.71
+          },
+          {
+            "rank": 6,
+            "preferred_term": "Bradycardia",
+            "event_count": 37,
+            "event_percent": 1.08,
+            "distinct_cases_count": 37,
+            "case_percent": 3.61
+          },
+          {
+            "rank": 7,
+            "preferred_term": "Dizziness",
+            "event_count": 36,
+            "event_percent": 1.05,
+            "distinct_cases_count": 36,
+            "case_percent": 3.52
+          },
+          {
+            "rank": 8,
+            "preferred_term": "Fatigue",
+            "event_count": 33,
+            "event_percent": 0.96,
+            "distinct_cases_count": 33,
+            "case_percent": 3.22
+          },
+          {
+            "rank": 9,
+            "preferred_term": "Off label use",
+            "event_count": 31,
+            "event_percent": 0.9,
+            "distinct_cases_count": 31,
+            "case_percent": 3.03
+          },
+          {
+            "rank": 10,
+            "preferred_term": "Fall",
+            "event_count": 30,
+            "event_percent": 0.87,
+            "distinct_cases_count": 30,
+            "case_percent": 2.93
+          },
+          {
+            "rank": 11,
+            "preferred_term": "Diarrhoea",
+            "event_count": 30,
+            "event_percent": 0.87,
+            "distinct_cases_count": 30,
+            "case_percent": 2.93
+          },
+          {
+            "rank": 12,
+            "preferred_term": "Condition aggravated",
+            "event_count": 27,
+            "event_percent": 0.79,
+            "distinct_cases_count": 27,
+            "case_percent": 2.64
+          },
+          {
+            "rank": 13,
+            "preferred_term": "Hypokalaemia",
+            "event_count": 27,
+            "event_percent": 0.79,
+            "distinct_cases_count": 27,
+            "case_percent": 2.64
+          },
+          {
+            "rank": 14,
+            "preferred_term": "Medication error",
+            "event_count": 25,
+            "event_percent": 0.73,
+            "distinct_cases_count": 25,
+            "case_percent": 2.44
+          },
+          {
+            "rank": 15,
+            "preferred_term": "Asthenia",
+            "event_count": 25,
+            "event_percent": 0.73,
+            "distinct_cases_count": 25,
+            "case_percent": 2.44
+          }
+        ]
+      },
+      "reaction_outcomes_summary": {
+        "evidence_id": "ev_reaction_outcomes",
+        "title": "Reaction Outcome Breakdown",
+        "metric_key": "outcome_distribution",
+        "value": {
+          "recovered/resolved": 1257,
+          "unknown": 1028,
+          "not recovered/not resolved/ongoing": 512,
+          "recovering/resolving": 406,
+          "fatal": 134,
+          "recovered/resolved with sequelae": 34
+        },
+        "formatted_value": "Resolved: 1257, Fatal: 134",
+        "provenance": {
+          "analysis_id": "outcomes_analysis",
+          "version": "1.0",
+          "category": "outcomes",
+          "calculated_at": "2026-08-15T11:42:30.329866Z",
+          "method_name": "genar.analyses.outcomes.compute_outcomes_analysis",
+          "contributing_cases_count": 1018,
+          "sample_case_ids": [
+            "24780403",
+            "24780599",
+            "24780680",
+            "24784771",
+            "24784845"
+          ]
+        },
+        "description": "Cross-tabulation of positionally valid reactions with clinical outcomes.",
+        "table_representation": [
+          {
+            "preferred_term": "Acute kidney injury",
+            "total_events": 79,
+            "recovered_resolved": 44,
+            "recovering": 14,
+            "not_recovered": 4,
+            "fatal": 7,
+            "unknown": 8,
+            "sequelae": 2
+          },
+          {
+            "preferred_term": "Drug ineffective",
+            "total_events": 54,
+            "recovered_resolved": 7,
+            "recovering": 5,
+            "not_recovered": 2,
+            "fatal": 0,
+            "unknown": 40,
+            "sequelae": 0
+          },
+          {
+            "preferred_term": "Hypotension",
+            "total_events": 46,
+            "recovered_resolved": 24,
+            "recovering": 8,
+            "not_recovered": 3,
+            "fatal": 1,
+            "unknown": 9,
+            "sequelae": 1
+          },
+          {
+            "preferred_term": "Drug interaction",
+            "total_events": 42,
+            "recovered_resolved": 18,
+            "recovering": 1,
+            "not_recovered": 1,
+            "fatal": 1,
+            "unknown": 21,
+            "sequelae": 0
+          },
+          {
+            "preferred_term": "Dyspnoea",
+            "total_events": 38,
+            "recovered_resolved": 14,
+            "recovering": 4,
+            "not_recovered": 5,
+            "fatal": 3,
+            "unknown": 10,
+            "sequelae": 2
+          },
+          {
+            "preferred_term": "Bradycardia",
+            "total_events": 37,
+            "recovered_resolved": 21,
+            "recovering": 5,
+            "not_recovered": 2,
+            "fatal": 0,
+            "unknown": 8,
+            "sequelae": 1
+          },
+          {
+            "preferred_term": "Dizziness",
+            "total_events": 36,
+            "recovered_resolved": 16,
+            "recovering": 2,
+            "not_recovered": 6,
+            "fatal": 0,
+            "unknown": 11,
+            "sequelae": 1
+          },
+          {
+            "preferred_term": "Fatigue",
+            "total_events": 33,
+            "recovered_resolved": 7,
+            "recovering": 4,
+            "not_recovered": 12,
+            "fatal": 0,
+            "unknown": 10,
+            "sequelae": 0
+          },
+          {
+            "preferred_term": "Off label use",
+            "total_events": 31,
+            "recovered_resolved": 9,
+            "recovering": 1,
+            "not_recovered": 2,
+            "fatal": 0,
+            "unknown": 19,
+            "sequelae": 0
+          },
+          {
+            "preferred_term": "Diarrhoea",
+            "total_events": 30,
+            "recovered_resolved": 12,
+            "recovering": 5,
+            "not_recovered": 7,
+            "fatal": 1,
+            "unknown": 5,
+            "sequelae": 0
+          }
+        ]
+      }
+    },
+    "summary_metrics": {
+      "total_cases": 1024,
+      "total_reactions": 3429,
+      "reporting_period_start": "2024-12-27",
+      "reporting_period_end": "2025-12-26",
+      "serious_cases": 1023,
+      "serious_percent": 99.9,
+      "fifteen_day_alerts": 1023,
+      "product_name": "Bisoprolol",
+      "active_substance": "Bisoprolol Fumarate",
+      "manufacturer": "Aurobindo Pharma"
+    },
+    "table_data": null,
+    "non_invention_notes": [
+      "Use strictly neutral regulatory phrasing.",
+      "Never state that a reaction was caused by the drug; describe reported associations.",
+      "Do not invent background clinical studies or unsupplied clinical histories."
+    ],
+    "created_at": "2026-08-15T11:42:30.369996Z"
+  },
+  "regulatory_actions": {
+    "section_id": "regulatory_actions",
+    "section_title": "8. Actions Taken for Safety Reasons",
+    "dataset_name": "bisoprolol_sample_2024",
+    "reporting_period": "2024-12-27 to 2025-12-26",
+    "items": {},
+    "summary_metrics": {
+      "product_name": "Bisoprolol",
+      "active_substance": "Bisoprolol Fumarate",
+      "manufacturer": "Aurobindo Pharma"
+    },
+    "table_data": null,
+    "non_invention_notes": [],
+    "created_at": "2026-08-15T11:42:30.370009Z"
+  }
+}
