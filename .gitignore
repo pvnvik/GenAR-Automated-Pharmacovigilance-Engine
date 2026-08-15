@@ -79,6 +79,11 @@ venv.bak/
 .settings/
 
 # macOS / Windows OS artifacts
+# MS Office temporary lock files
+~$*
+*.tmp
+
+# Operating System Files
 .DS_Store
 .DS_Store?
 ._*

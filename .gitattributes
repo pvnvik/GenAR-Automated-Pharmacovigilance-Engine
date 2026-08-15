@@ -1,0 +1,24 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Explicit binary files (do not normalize line endings)
+*.xlsx binary
+*.xls binary
+*.docx binary
+*.doc binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.zip binary
+*.tar.gz binary
+
+# Documentation and code
+*.py text diff=python
+*.md text
+*.yaml text
+*.yml text
+*.json text
+*.toml text
+*.txt text
