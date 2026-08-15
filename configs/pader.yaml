@@ -74,8 +74,12 @@ sections:
     table_columns:
       - "Preferred Term (PT)"
       - "Total Events"
-      - "Serious Events"
-      - "Most Common Outcome"
+      - "Recovered"
+      - "Recovering"
+      - "Not Recovered"
+      - "Fatal"
+      - "Unknown"
+      - "Sequelae"
 
   - id: "trend_analysis"
     title: "6. Interval Trend Analysis"

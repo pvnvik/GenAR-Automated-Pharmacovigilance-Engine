@@ -395,6 +395,92 @@ def build_packets_command(report_config: str, dataset_config: str, output_json: 
         console.print(f"[bold green]Saved {len(packets)} evidence packets to {out_path}[/bold green]")
 
 
+@cli.command("generate-drafts")
+@click.option(
+    "--report-config",
+    "-r",
+    default="configs/pader.yaml",
+    help="Path to report configuration YAML file.",
+    type=click.Path(exists=True),
+)
+@click.option(
+    "--dataset-config",
+    "-d",
+    default="configs/dataset/bisoprolol.yaml",
+    help="Path to dataset configuration YAML file.",
+    type=click.Path(exists=True),
+)
+@click.option(
+    "--output-markdown",
+    "-o",
+    default=None,
+    help="Optional path to export full assembled draft report Markdown.",
+    type=click.Path(),
+)
+def generate_drafts_command(report_config: str, dataset_config: str, output_markdown: Optional[str]):
+    """Execute section generation across template, table, and LLM modes for all sections."""
+    from genar.analyses.registry import AnalysisRegistry
+    from genar.evidence.packet_builder import build_all_packets
+    from genar.evidence.store import EvidenceStore
+    from genar.generation.dispatcher import SectionGenerator
+    from genar.ingest.canonicalizer import run_canonicalization
+    from genar.ingest.loader import load_raw_dataframe
+
+    console.print(Panel(f"[bold blue]GenAR Multi-Mode Section Generator[/bold blue] (v{__version__})"))
+
+    r_cfg = load_report_config(report_config)
+    d_cfg = load_dataset_config(dataset_config)
+    console.print(f"[green][OK][/green] Loaded report: [bold]{r_cfg.title}[/bold] & dataset: [bold]{d_cfg.product_name}[/bold]")
+
+    raw_path = Path(d_cfg.raw_data_path)
+    if not raw_path.exists():
+        console.print(f"[red][ERROR][/red] Raw data file not found: {raw_path}")
+        raise click.Abort()
+
+    raw_df = load_raw_dataframe(raw_path)
+    cases_df, reactions_df, _ = run_canonicalization(raw_df, d_cfg)
+
+    # Analyses and evidence store
+    results = AnalysisRegistry.run_all(cases_df, reactions_df, d_cfg)
+    store = EvidenceStore()
+    store.add_many(results)
+
+    # Packets and generation
+    packets = build_all_packets(r_cfg, store, d_cfg)
+    generator = SectionGenerator()
+
+    console.print("Generating section drafts in configured order...")
+    drafts = generator.generate_all(r_cfg, packets)
+
+    table = Table(title="Generated Section Drafts")
+    table.add_column("Order", style="cyan", no_wrap=True)
+    table.add_column("Section Title", style="white")
+    table.add_column("Mode", style="yellow")
+    table.add_column("Content Length", style="green")
+    table.add_column("Evidence Used", style="bold magenta")
+
+    for draft in drafts:
+        table.add_row(
+            str(draft.order),
+            draft.title,
+            draft.generation_mode.value,
+            f"{len(draft.markdown_content):,} chars",
+            str(len(draft.evidence_ids_used)),
+        )
+
+    console.print(table)
+
+    # Assemble full draft markdown
+    full_md = f"# {r_cfg.title}\n\n**Product:** {d_cfg.product_name} ({d_cfg.active_substance})\n**Manufacturer:** {d_cfg.manufacturer}\n**Reporting Period:** {d_cfg.reporting_period_start} to {d_cfg.reporting_period_end}\n**Regulatory Framework:** {r_cfg.regulatory_framework}\n\n---\n\n"
+    full_md += "\n\n---\n\n".join([d.markdown_content for d in drafts])
+
+    if output_markdown:
+        out_path = Path(output_markdown)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(full_md, encoding="utf-8")
+        console.print(f"[bold green]Assembled draft Markdown report saved to {out_path}[/bold green]")
+
+
 @cli.command("run-pipeline")
 @click.option(
     "--report-config",
@@ -409,8 +495,8 @@ def build_packets_command(report_config: str, dataset_config: str, output_json: 
     help="Path to dataset configuration YAML file.",
 )
 def run_pipeline(report_config: str, dataset_config: str):
-    """Execute the deterministic analysis and evidence pipeline (Phase 5+)."""
-    console.print("[yellow]Deterministic pipeline execution will be implemented in subsequent phases (Phase 6-10).[/yellow]")
+    """Execute the deterministic analysis and evidence pipeline (Phase 7+)."""
+    console.print("[yellow]Deterministic pipeline execution will be implemented in subsequent phases (Phase 8-10).[/yellow]")
 
 
 if __name__ == "__main__":

@@ -51,9 +51,9 @@ def compute_seriousness_breakdown(
 
         criteria_table.append({
             "criteria": label,
-            "key": key_name,
             "count": count,
             "percent_of_total": pct_total,
+            "key": key_name,
             "percent_of_serious": pct_serious,
         })
 
