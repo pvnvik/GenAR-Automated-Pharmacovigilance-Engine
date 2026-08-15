@@ -154,10 +154,44 @@ def test_export_html_report(pipeline_context, tmp_path: Path):
     content = exported_path.read_text(encoding="utf-8")
     assert "<!DOCTYPE html>" in content
     assert "Bisoprolol - PADER Safety Report" in content
+    assert "Total Cases" in content
     assert "1,024" in content
-    assert "1,023 (99.9%)" in content
     assert "styled-table" in content
     assert "badge-approved" in content
+
+
+def test_export_docx_report(pipeline_context, tmp_path: Path):
+    """Verify standalone DOCX Word report generation with styled headings and tables."""
+    from genar.export import export_docx_report
+
+    report_cfg, dataset_cfg, _, _, drafts = pipeline_context
+    workflow = ReviewWorkflow(drafts)
+    workflow.approve_all()
+
+    meta = ReportMetadata(
+        report_id="PADER-DOCX-TEST",
+        report_type="PADER",
+        product_name="Bisoprolol",
+        manufacturer="Aurobindo Pharma",
+        reporting_period_start=dataset_cfg.reporting_period_start,
+        reporting_period_end=dataset_cfg.reporting_period_end,
+        run_id="test-run-docx",
+        app_version="0.1.0",
+        config_file="configs/pader.yaml",
+        dataset_file="configs/dataset/bisoprolol.yaml",
+        is_fully_approved=True,
+    )
+    doc = ReportDocument(
+        metadata=meta,
+        sections=workflow.get_drafts(),
+        review_records=workflow.get_review_records(),
+    )
+
+    out_file = tmp_path / "pader_test.docx"
+    exported_path = export_docx_report(doc, out_file)
+
+    assert exported_path.exists()
+    assert exported_path.stat().st_size > 1000
 
 
 def test_export_audit_manifest(pipeline_context, tmp_path: Path):

@@ -215,17 +215,21 @@ def export_report_node(state: ReportWorkflowState) -> Dict[str, Any]:
         render_formats=["markdown", "html", "json"],
     )
 
+    from genar.export import export_docx_report
+
     md_path = export_markdown_report(report_doc, out_dir / "pader_report.md")
     html_path = export_html_report(report_doc, out_dir / "pader_report.html")
+    docx_path = export_docx_report(report_doc, out_dir / "pader_report.docx")
     manifest_path = export_audit_manifest(report_doc, store, citations, out_dir / "provenance_manifest.json")
 
     exported = {
         "markdown": str(md_path),
         "html": str(html_path),
+        "docx": str(docx_path),
         "manifest": str(manifest_path),
     }
 
-    log = f"[Export] Successfully packaged Markdown, HTML, and Manifest to '{out_dir}'."
+    log = f"[Export] Successfully packaged Markdown, HTML, DOCX, and Manifest to '{out_dir}'."
     return {
         "report_document": report_doc,
         "exported_files": exported,

@@ -615,14 +615,18 @@ def run_pipeline(report_config: str, dataset_config: str, output_dir: str, auto_
     )
 
     # 10. Export Artifacts
+    from genar.export import export_docx_report
+
     md_path = export_markdown_report(report_doc, out_dir / "pader_report.md")
     html_path = export_html_report(report_doc, out_dir / "pader_report.html")
+    docx_path = export_docx_report(report_doc, out_dir / "pader_report.docx")
     manifest_path = export_audit_manifest(report_doc, store, all_citations, out_dir / "provenance_manifest.json")
 
     summary_panel = Panel(
         f"[bold green]Report Pipeline Completed Successfully![/bold green]\n\n"
         f"• [bold]Markdown Report:[/bold] {md_path}\n"
         f"• [bold]Styled HTML Report:[/bold] {html_path}\n"
+        f"• [bold]Word Document:[/bold] {docx_path}\n"
         f"• [bold]Provenance Manifest:[/bold] {manifest_path}\n"
         f"• [bold]Canonical Cases:[/bold] {len(cases_df):,}\n"
         f"• [bold]Review Status:[/bold] {'APPROVED' if workflow.is_fully_approved() else 'PENDING'}",

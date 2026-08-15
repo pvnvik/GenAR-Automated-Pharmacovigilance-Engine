@@ -58,37 +58,96 @@ Please generate an objective, evidence-backed regulatory narrative for this sect
     return SYSTEM_PROMPT, user_prompt
 
 
+import urllib.request
+import urllib.error
+
+
 class LLMGenerator:
-    """Pluggable LLM Generator supporting live LLM APIs with deterministic offline fallback."""
+    """Pluggable LLM Generator supporting live Gemini / OpenAI LLM APIs with deterministic offline fallback."""
 
     def __init__(self, model_name: str = "deterministic-regulatory-writer", api_key: Optional[str] = None):
-        self.model_name = model_name
-        self.api_key = api_key or os.environ.get("OPENAI_API_KEY") or os.environ.get("GEMINI_API_KEY")
+        self.model_name = model_name or "deterministic-regulatory-writer"
+        self.api_key = api_key or os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or os.environ.get("OPENAI_API_KEY")
 
     def generate(self, section_cfg: SectionConfig, packet: EvidencePacket) -> str:
         """Generate narrative prose from approved evidence packet."""
         system_prompt, user_prompt = build_llm_prompt(section_cfg, packet)
 
-        # Check if live LLM is configured and requested
-        if self.api_key and "gpt" in self.model_name.lower():
-            try:
-                import openai
-                client = openai.OpenAI(api_key=self.api_key)
-                response = client.chat.completions.create(
-                    model=self.model_name,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt},
-                    ],
-                    temperature=0.0,
-                )
-                return response.choices[0].message.content.strip()
-            except Exception:
-                # Fallback to deterministic synthesis if API call fails
-                pass
+        # 1. Check Gemini Live API
+        if "gemini" in self.model_name.lower():
+            gemini_key = self.api_key or os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+            if gemini_key:
+                try:
+                    gemini_text = self._call_gemini(gemini_key, system_prompt, user_prompt)
+                    if gemini_text:
+                        return f"## {section_cfg.title}\n\n{gemini_text.strip()}"
+                except Exception:
+                    # Fallback to deterministic synthesis if API call fails
+                    pass
 
-        # Offline Deterministic Synthesizer (guaranteed grounding & zero hallucination)
+        # 2. Check OpenAI Live API
+        if "gpt" in self.model_name.lower():
+            if self.api_key:
+                try:
+                    import openai
+
+                    client = openai.OpenAI(api_key=self.api_key)
+                    response = client.chat.completions.create(
+                        model=self.model_name,
+                        messages=[
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": user_prompt},
+                        ],
+                        temperature=0.0,
+                    )
+                    return f"## {section_cfg.title}\n\n{response.choices[0].message.content.strip()}"
+                except Exception:
+                    # Fallback to deterministic synthesis if API call fails
+                    pass
+
+        # 3. Offline Deterministic Synthesizer (guaranteed grounding & zero hallucination)
         return self._deterministic_synthesize(section_cfg, packet)
+
+    def _call_gemini(self, api_key: str, system_prompt: str, user_prompt: str) -> Optional[str]:
+        """Execute HTTP POST call to Google Gemini 3.5 Flash API."""
+        model = "gemini-3.5-flash" if "gemini" not in self.model_name.lower() else self.model_name
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        payload = {
+            "contents": [
+                {
+                    "role": "user",
+                    "parts": [
+                        {
+                            "text": (
+                                f"{system_prompt}\n\n"
+                                f"Instructions: Write a clear, factual, and concise regulatory safety text (2 to 4 paragraphs, 150-250 words total). "
+                                f"Do NOT output lists of raw numbers. Describe the cumulative case volume, seriousness rate, key adverse reactions, and safety conclusions using ONLY facts provided.\n\n"
+                                f"Task:\n{user_prompt}"
+                            )
+                        }
+                    ],
+                }
+            ],
+            "generationConfig": {
+                "temperature": 0.0,
+                "maxOutputTokens": 2048,
+            },
+        }
+
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            candidates = data.get("candidates", [])
+            if candidates:
+                parts = candidates[0].get("content", {}).get("parts", [])
+                if parts:
+                    return parts[0].get("text", "").strip()
+        return None
 
     def _deterministic_synthesize(self, section_cfg: SectionConfig, packet: EvidencePacket) -> str:
         """Synthesize neutral regulatory narrative directly from evidence packet metrics."""
