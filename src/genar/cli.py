@@ -233,6 +233,87 @@ def canonicalize(dataset_config: str, output_dir: str):
     console.print("[bold green]Canonicalization complete and artifacts successfully persisted![/bold green]")
 
 
+@cli.command("run-analysis")
+@click.option(
+    "--dataset-config",
+    "-d",
+    default="configs/dataset/bisoprolol.yaml",
+    help="Path to dataset configuration YAML file.",
+    type=click.Path(exists=True),
+)
+@click.option(
+    "--output-json",
+    "-o",
+    default=None,
+    help="Optional path to export all analysis result JSON records.",
+    type=click.Path(),
+)
+def run_analysis_command(dataset_config: str, output_json: Optional[str]):
+    """Execute all registered deterministic analyses (Volume, Seriousness, Demographics, Reactions, Outcomes, Alerts, Trends)."""
+    import json
+    from genar.analyses.registry import AnalysisRegistry
+    from genar.ingest.canonicalizer import run_canonicalization
+    from genar.ingest.loader import load_raw_dataframe
+
+    console.print(Panel(f"[bold blue]GenAR Deterministic Analysis Runner[/bold blue] (v{__version__})"))
+
+    cfg = load_dataset_config(dataset_config)
+    console.print(f"[green][OK][/green] Loaded dataset config for [bold]{cfg.product_name}[/bold]")
+
+    raw_path = Path(cfg.raw_data_path)
+    if not raw_path.exists():
+        console.print(f"[red][ERROR][/red] Raw data file not found: {raw_path}")
+        raise click.Abort()
+
+    raw_df = load_raw_dataframe(raw_path)
+    cases_df, reactions_df, _ = run_canonicalization(raw_df, cfg)
+
+    console.print("Running registered deterministic analysis modules...")
+    results = AnalysisRegistry.run_all(cases_df, reactions_df, cfg)
+
+    # 1. Summary table of executed analyses
+    summary_table = Table(title="Executed Deterministic Analyses")
+    summary_table.add_column("Analysis ID", style="cyan")
+    summary_table.add_column("Category", style="yellow")
+    summary_table.add_column("Execution Time", style="green")
+    summary_table.add_column("Key Metric", style="bold magenta")
+
+    for aid, res in results.items():
+        key_metric_str = ""
+        if res.category == "volume":
+            key_metric_str = f"{res.metrics.get('total_cases'):,} cases / {res.metrics.get('total_reactions'):,} rxns"
+        elif res.category == "seriousness":
+            key_metric_str = f"{res.metrics.get('serious_cases'):,} serious ({res.metrics.get('serious_percent')}%)"
+        elif res.category == "demographics":
+            key_metric_str = f"{res.metrics.get('sex_distribution')} | Elderly: {res.metrics.get('age_group_distribution', {}).get('Elderly (65+)', 0)}"
+        elif res.category == "reactions":
+            top_rxn = res.metrics.get("top_reactions_overall", [{}])[0].get("preferred_term", "N/A")
+            key_metric_str = f"Top PT: {top_rxn} ({res.metrics.get('unique_preferred_terms')} unique)"
+        elif res.category == "outcomes":
+            key_metric_str = f"Resolved: {res.metrics.get('outcome_distribution', {}).get('recovered/resolved', 0):,} | Fatal: {res.metrics.get('outcome_distribution', {}).get('fatal', 0):,}"
+        elif res.category == "alerts":
+            key_metric_str = f"{res.metrics.get('fifteen_day_alerts_count'):,} expedited 15-day cases ({res.metrics.get('fifteen_day_alerts_percent')}%)"
+        elif res.category == "trends":
+            key_metric_str = f"{len(res.metrics.get('candidate_anomalies', []))} statistical anomalies flagged across {res.metrics.get('total_months')} months"
+
+        summary_table.add_row(
+            res.analysis_id,
+            res.category.value,
+            f"{res.execution_time_ms} ms",
+            key_metric_str,
+        )
+
+    console.print(summary_table)
+
+    # 2. Export JSON if requested
+    if output_json:
+        out_path = Path(output_json)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        dump_data = {aid: res.model_dump(mode="json") for aid, res in results.items()}
+        out_path.write_text(json.dumps(dump_data, indent=2, default=str), encoding="utf-8")
+        console.print(f"[bold green]Saved {len(results)} analysis result models to {out_path}[/bold green]")
+
+
 @cli.command("run-pipeline")
 @click.option(
     "--report-config",
@@ -247,8 +328,8 @@ def canonicalize(dataset_config: str, output_dir: str):
     help="Path to dataset configuration YAML file.",
 )
 def run_pipeline(report_config: str, dataset_config: str):
-    """Execute the deterministic analysis and evidence pipeline (Phase 3+)."""
-    console.print("[yellow]Deterministic pipeline execution will be implemented in subsequent phases (Phase 4-10).[/yellow]")
+    """Execute the deterministic analysis and evidence pipeline (Phase 4+)."""
+    console.print("[yellow]Deterministic pipeline execution will be implemented in subsequent phases (Phase 5-10).[/yellow]")
 
 
 if __name__ == "__main__":
