@@ -11,26 +11,42 @@
 
 ---
 
-## 1. How Do I Run It? (Setup + One-Command Execution)
+## 1. Quickstart & Setup Guide (New Systems)
+
+### Prerequisites
+- **Python:** `>= 3.10` (tested on 3.10, 3.11, 3.12, 3.13)
+- **Package Manager:** `pip` (standard with Python)
 
 ### Step 1: Environment Setup
-```powershell
+```bash
 # 1. Clone repository & navigate to folder
+git clone <repository_url>
 cd pvn-vikrant-genar-challenge
 
-# 2. Create and activate virtual environment (optional but recommended)
+# 2. Create and activate virtual environment
+# Windows (PowerShell):
 python -m venv .venv
-.venv\Scripts\activate   # On Windows (or 'source .venv/bin/activate' on Linux/macOS)
+.venv\Scripts\Activate.ps1
 
-# 3. Install dependencies
+# Linux / macOS:
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 3. Upgrade pip and install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
 
-# 4. (Optional) Configure Gemini API key in .env (if not present, deterministic synthesizer is used)
-# GEMINI_API_KEY=your_key_here
+# Or install editable package:
+# pip install -e .
+
+# 4. (Optional) Configure Gemini / OpenAI API key in .env
+# Copy .env.example to .env
+# If omitted, GenAR automatically falls back to its deterministic offline synthesizer
+cp .env.example .env
 ```
 
-### Step 2: One Command to Regenerate the Entire Report
-```powershell
+### Step 2: One-Command Pipeline Execution
+```bash
 # Direct CLI execution (Ingestion -> Analysis -> Generation -> Verification -> Export):
 python -m genar run-pipeline -o output
 
@@ -39,13 +55,15 @@ python -m genar run-graph -o output
 ```
 
 ### Generated Submission Artifacts in `output/`:
-- `output/pader_report.md` — Submission-ready Markdown report.
-- `output/pader_report.html` — Interactive styled HTML report with KPI tiles and sticky navigation.
-- `output/pader_report.docx` — Formatted Microsoft Word (.docx) document with tables.
-- `output/provenance_manifest.json` — Machine-readable regulatory audit manifest with sentence-level claim citations.
+- **`output/pader_report.md`** — Submission-ready Markdown report.
+- **`output/pader_report.html`** — Interactive styled HTML report with KPI tiles and sticky navigation.
+- **`output/pader_report.docx`** — Formatted Microsoft Word (.docx) document with tables.
+- **`output/provenance_manifest.json`** — Machine-readable regulatory audit manifest with sentence-level claim citations.
+- **`output/analysis_results.json`** — Raw computed metrics across all 7 deterministic analyses.
+- **`output/evidence_packets.json`** — Section-scoped isolated evidence packets with anti-hallucination rules.
 
 ### Step 3: Run Automated Test Suite (66 Tests)
-```powershell
+```bash
 python -m pytest -v
 ```
 

@@ -5,6 +5,10 @@ pyyaml>=6.0.1
 pandas>=2.0.0
 openpyxl>=3.1.2
 
+# Document Export & Orchestration
+python-docx>=1.1.0
+langgraph>=0.2.0
+
 # CLI & Output Formatting
 click>=8.1.0
 rich>=13.7.0
